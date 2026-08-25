@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -8,7 +9,7 @@
 <meta name="viewport"
 content="width=device-width, initial-scale=1.0">
 
-<title>SHOKTI Police Control Room</title>
+<title>SHOKTI — Police Control Room</title>
 
 <style>
 
@@ -20,9 +21,7 @@ content="width=device-width, initial-scale=1.0">
 
     padding: 0;
 
-    font-family:
-        Arial,
-        sans-serif;
+    font-family: Arial, sans-serif;
 
 }
 
@@ -49,7 +48,8 @@ body {
 
     color: white;
 
-    padding: 22px 35px;
+    padding:
+        22px 35px;
 
     display: flex;
 
@@ -62,17 +62,21 @@ body {
 
 .logo h1 {
 
-    letter-spacing: 2px;
+    letter-spacing:
+        2px;
 
 }
 
 .logo p {
 
-    font-size: 12px;
+    font-size:
+        12px;
 
-    opacity: .7;
+    opacity:
+        .7;
 
-    margin-top: 5px;
+    margin-top:
+        5px;
 
 }
 
@@ -107,21 +111,21 @@ body {
 
 }
 
-.dashboard-title {
+.title {
 
     margin-bottom:
         20px;
 
 }
 
-.dashboard-title h2 {
+.title h2 {
 
     font-size:
-        26px;
+        27px;
 
 }
 
-.dashboard-title p {
+.title p {
 
     color:
         #777;
@@ -142,7 +146,7 @@ body {
         20px;
 
     padding:
-        60px 20px;
+        70px 20px;
 
     text-align:
         center;
@@ -152,7 +156,7 @@ body {
 .waiting-icon {
 
     font-size:
-        60px;
+        65px;
 
 }
 
@@ -173,23 +177,23 @@ body {
 
 }
 
-/* ALERT */
+/* EMERGENCY */
 
-.alert {
+.emergency {
 
     display:
         none;
 
 }
 
-.alert.active {
+.emergency.active {
 
     display:
         block;
 
 }
 
-.emergency-banner {
+.banner {
 
     background:
         #b71c1c;
@@ -214,21 +218,27 @@ body {
 @keyframes pulse {
 
     0% {
+
         box-shadow:
         0 0 0
-        rgba(183,28,28,.4);
+        rgba(183,28,28,.3);
+
     }
 
     50% {
+
         box-shadow:
-        0 0 25px
-        rgba(183,28,28,.4);
+        0 0 30px
+        rgba(183,28,28,.5);
+
     }
 
     100% {
+
         box-shadow:
         0 0 0
-        rgba(183,28,28,.4);
+        rgba(183,28,28,.3);
+
     }
 
 }
@@ -268,9 +278,6 @@ body {
     margin-bottom:
         15px;
 
-    font-size:
-        18px;
-
 }
 
 .info {
@@ -299,7 +306,7 @@ body {
 
 }
 
-.active {
+.green {
 
     color:
         #159447;
@@ -309,7 +316,7 @@ body {
 
 }
 
-.danger {
+.red {
 
     color:
         #d32f2f;
@@ -319,34 +326,81 @@ body {
 
 }
 
-/* LOCATION */
+/* VIDEO */
 
-.location-box {
+.video-card {
+
+    grid-column:
+        span 2;
+
+}
+
+#remoteVideo {
+
+    width:
+        100%;
+
+    max-height:
+        600px;
+
+    object-fit:
+        contain;
 
     background:
-        #f5f7f8;
+        #111;
 
     border-radius:
-        15px;
+        18px;
+
+    display:
+        block;
+
+}
+
+.video-status {
+
+    text-align:
+        center;
+
+    margin-top:
+        10px;
+
+    color:
+        #159447;
+
+    font-weight:
+        bold;
+
+}
+
+/* LOCATION */
+
+.location {
+
+    background:
+        #f4f6f7;
 
     padding:
         18px;
+
+    border-radius:
+        15px;
 
     line-height:
         1.8;
 
 }
 
-.map-button {
+.map {
 
     display:
         block;
 
-    margin-top:
-        15px;
-
     text-decoration:
         none;
+
+    text-align:
+        center;
 
     background:
         #1976d2;
@@ -355,40 +409,37 @@ body {
         white;
 
     padding:
-        13px;
+        14px;
+
+    margin-top:
+        15px;
 
     border-radius:
         12px;
 
-    text-align:
-        center;
-
 }
 
-/* DISPATCH */
+/* BUTTONS */
 
 .dispatch {
 
     width:
         100%;
 
-    margin-top:
-        20px;
-
     border:
         none;
-
-    background:
-        #c62828;
-
-    color:
-        white;
 
     padding:
         17px;
 
     border-radius:
         14px;
+
+    background:
+        #c62828;
+
+    color:
+        white;
 
     font-size:
         16px;
@@ -401,7 +452,7 @@ body {
 
 }
 
-.clear {
+.resolve {
 
     width:
         100%;
@@ -426,14 +477,19 @@ body {
 
 }
 
-/* RESPONSIVE */
-
 @media(max-width:800px) {
 
     .grid {
 
         grid-template-columns:
             1fr;
+
+    }
+
+    .video-card {
+
+        grid-column:
+            span 1;
 
     }
 
@@ -468,9 +524,7 @@ POLICE EMERGENCY RESPONSE CENTER
 </div>
 
 <div class="status">
-
 ● SYSTEM ONLINE
-
 </div>
 
 </header>
@@ -479,14 +533,14 @@ POLICE EMERGENCY RESPONSE CENTER
 <main class="container">
 
 
-<div class="dashboard-title">
+<div class="title">
 
 <h2>
 Emergency Monitoring
 </h2>
 
 <p>
-Monitoring active SHOKTI emergency requests
+SHOKTI real-time emergency response prototype
 </p>
 
 </div>
@@ -516,11 +570,11 @@ The SHOKTI network is monitoring for emergency signals.
 <!-- EMERGENCY -->
 
 <div
-id="alert"
-class="alert">
+id="emergency"
+class="emergency">
 
 
-<div class="emergency-banner">
+<div class="banner">
 
 <h2>
 🚨 EMERGENCY ALERT
@@ -534,6 +588,31 @@ Immediate assistance may be required.
 
 
 <div class="grid">
+
+
+<!-- LIVE VIDEO -->
+
+<div class="card video-card">
+
+<h3>
+🎥 Live Victim Camera
+</h3>
+
+<video
+id="remoteVideo"
+autoplay
+playsinline>
+</video>
+
+<div
+id="videoStatus"
+class="video-status">
+
+● WAITING FOR LIVE STREAM
+
+</div>
+
+</div>
 
 
 <!-- VICTIM -->
@@ -551,7 +630,7 @@ Immediate assistance may be required.
 Name
 </span>
 
-<strong id="name">
+<strong id="victimName">
 -
 </strong>
 
@@ -564,7 +643,7 @@ Name
 Phone
 </span>
 
-<strong id="phone">
+<strong id="victimPhone">
 -
 </strong>
 
@@ -577,7 +656,7 @@ Phone
 Email
 </span>
 
-<strong id="email">
+<strong id="victimEmail">
 -
 </strong>
 
@@ -587,7 +666,7 @@ Email
 <div class="info">
 
 <span>
-Incident ID
+Incident
 </span>
 
 <strong id="incident">
@@ -596,22 +675,6 @@ Incident ID
 
 </div>
 
-
-<div class="info">
-
-<span>
-Trigger
-</span>
-
-<strong
-id="trigger"
-class="danger">
-
--
-
-</strong>
-
-</div>
 
 </div>
 
@@ -628,14 +691,11 @@ class="danger">
 <div class="info">
 
 <span>
-GPS Location
+GPS
 </span>
 
-<strong
-class="active">
-
+<strong class="green">
 ● ACTIVE
-
 </strong>
 
 </div>
@@ -648,9 +708,10 @@ Camera
 </span>
 
 <strong
-class="active">
+id="cameraState"
+class="green">
 
-● ACTIVE
+● CONNECTING
 
 </strong>
 
@@ -664,9 +725,10 @@ Microphone
 </span>
 
 <strong
-class="active">
+id="micState"
+class="green">
 
-● ACTIVE
+● CONNECTING
 
 </strong>
 
@@ -676,17 +738,19 @@ class="active">
 <div class="info">
 
 <span>
-Network
+WebRTC
 </span>
 
 <strong
-class="active">
+id="connectionState"
+class="green">
 
-● CONNECTED
+● CONNECTING
 
 </strong>
 
 </div>
+
 
 </div>
 
@@ -700,11 +764,12 @@ class="active">
 </h3>
 
 
-<div class="location-box">
+<div class="location">
 
 <div>
 
 Latitude:
+
 <strong id="latitude">
 -
 </strong>
@@ -715,6 +780,7 @@ Latitude:
 <div>
 
 Longitude:
+
 <strong id="longitude">
 -
 </strong>
@@ -725,6 +791,7 @@ Longitude:
 <div>
 
 Time:
+
 <strong id="time">
 -
 </strong>
@@ -735,11 +802,11 @@ Time:
 
 
 <a
-id="map"
-class="map-button"
+id="mapLink"
+class="map"
 target="_blank">
 
-📍 Open Location on Google Maps
+📍 OPEN LOCATION ON MAP
 
 </a>
 
@@ -754,19 +821,18 @@ target="_blank">
 🚔 Emergency Response
 </h3>
 
-
 <p>
 
-The emergency signal has been
-received by the SHOKTI Police
-Control Room.
+Emergency information and live
+media connection have been received
+by the demo Police Control Room.
 
 </p>
 
 
 <button
 class="dispatch"
-onclick="dispatch()">
+onclick="dispatchPolice()">
 
 🚔 DISPATCH POLICE UNIT
 
@@ -774,10 +840,10 @@ onclick="dispatch()">
 
 
 <button
-class="clear"
-onclick="clearEmergency()">
+class="resolve"
+onclick="resolveEmergency()">
 
-✓ Resolve Demo Emergency
+✓ RESOLVE DEMO EMERGENCY
 
 </button>
 
@@ -804,82 +870,122 @@ import {
     getDatabase,
     ref,
     onValue,
+    onChildAdded,
+    push,
     set
 }
 from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-database.js";
 
 
-/* =================================
-   FIREBASE CONFIG
-================================= */
+/* ==========================================
+   🔥 PASTE YOUR FIREBASE CONFIG HERE
+========================================== */
 
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyCx0hgLUR610_XUM16rbCekxsaqklOcwLI",
-  authDomain: "shokti-45501.firebaseapp.com",
-  databaseURL: "https://shokti-45501-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "shokti-45501",
-  storageBucket: "shokti-45501.firebasestorage.app",
-  messagingSenderId: "1020920544206",
-  appId: "1:1020920544206:web:3bda1aa2b53fc2068e099f",
-  measurementId: "G-8CTP48LXNW"
+
+    apiKey:
+    "PASTE_YOUR_API_KEY",
+
+    authDomain:
+    "PASTE_YOUR_AUTH_DOMAIN",
+
+    databaseURL:
+    "PASTE_YOUR_DATABASE_URL",
+
+    projectId:
+    "PASTE_YOUR_PROJECT_ID",
+
+    storageBucket:
+    "PASTE_YOUR_STORAGE_BUCKET",
+
+    messagingSenderId:
+    "PASTE_YOUR_MESSAGING_SENDER_ID",
+
+    appId:
+    "PASTE_YOUR_APP_ID"
+
 };
 
 
+/* ==========================================
+   FIREBASE
+========================================== */
+
 const app =
 initializeApp(firebaseConfig);
-
 
 const database =
 getDatabase(app);
 
 
-/* =================================
-   LISTEN FOR EMERGENCIES
-================================= */
+/* ==========================================
+   VARIABLES
+========================================== */
 
-const emergencyRef =
+let peerConnection = null;
+
+let currentCallId = null;
+
+let candidateListener = null;
+
+
+/* ==========================================
+   LISTEN FOR NEW EMERGENCY
+========================================== */
+
+const callsRef =
 ref(
     database,
-    "emergency/current"
+    "calls"
 );
 
 
-onValue(
-    emergencyRef,
+onChildAdded(
+
+    callsRef,
+
     snapshot => {
 
         const data =
             snapshot.val();
 
+        const callId =
+            snapshot.key;
 
-        if (!data) {
 
-            document
-                .getElementById("waiting")
-                .style.display =
-                "block";
-
-            document
-                .getElementById("alert")
-                .classList
-                .remove("active");
+        if (
+            !data ||
+            data.status !== "ACTIVE"
+        ) {
 
             return;
 
         }
 
 
-        showEmergency(data);
+        currentCallId =
+            callId;
+
+
+        showEmergency(
+            data
+        );
+
+
+        connectToVictim(
+            callId,
+            data
+        );
 
     }
+
 );
 
 
-/* =================================
+/* ==========================================
    SHOW EMERGENCY
-================================= */
+========================================== */
 
 function showEmergency(data) {
 
@@ -890,27 +996,27 @@ function showEmergency(data) {
 
 
     document
-        .getElementById("alert")
+        .getElementById("emergency")
         .classList
         .add("active");
 
 
     document
-        .getElementById("name")
+        .getElementById("victimName")
         .textContent =
-        data.name || "-";
+        data.victim?.name || "-";
 
 
     document
-        .getElementById("phone")
+        .getElementById("victimPhone")
         .textContent =
-        data.phone || "-";
+        data.victim?.phone || "-";
 
 
     document
-        .getElementById("email")
+        .getElementById("victimEmail")
         .textContent =
-        data.email || "-";
+        data.victim?.email || "-";
 
 
     document
@@ -919,22 +1025,35 @@ function showEmergency(data) {
         data.incidentId || "-";
 
 
-    document
-        .getElementById("trigger")
-        .textContent =
-        data.trigger || "-";
+    const location =
+        data.location;
 
 
-    document
-        .getElementById("latitude")
-        .textContent =
-        data.latitude || "-";
+    if (
+        location &&
+        location.latitude &&
+        location.longitude
+    ) {
+
+        document
+            .getElementById("latitude")
+            .textContent =
+            location.latitude;
 
 
-    document
-        .getElementById("longitude")
-        .textContent =
-        data.longitude || "-";
+        document
+            .getElementById("longitude")
+            .textContent =
+            location.longitude;
+
+
+        document
+            .getElementById("mapLink")
+            .href =
+
+            `https://www.google.com/maps?q=${location.latitude},${location.longitude}`;
+
+    }
 
 
     if (
@@ -944,134 +1063,360 @@ function showEmergency(data) {
         document
             .getElementById("time")
             .textContent =
+
             new Date(
                 data.timestamp
             ).toLocaleString();
 
     }
 
+}
+
+
+/* ==========================================
+   CONNECT TO VICTIM
+========================================== */
+
+async function connectToVictim(
+    callId,
+    data
+) {
+
+    /* Don't create multiple connections */
 
     if (
-        data.latitude &&
-        data.longitude
+        peerConnection
     ) {
 
+        try {
+
+            peerConnection.close();
+
+        }
+
+        catch {}
+
+    }
+
+
+    peerConnection =
+        new RTCPeerConnection({
+
+            iceServers: [
+
+                {
+                    urls:
+                    "stun:stun.l.google.com:19302"
+                }
+
+            ]
+
+        });
+
+
+    /* ======================================
+       RECEIVE VIDEO + AUDIO
+    ====================================== */
+
+    peerConnection.ontrack =
+    event => {
+
+        const remoteVideo =
+            document
+            .getElementById("remoteVideo");
+
+
+        if (
+            remoteVideo.srcObject !==
+            event.streams[0]
+        ) {
+
+            remoteVideo.srcObject =
+                event.streams[0];
+
+        }
+
+
         document
-            .getElementById("map")
-            .href =
-            `https://www.google.com/maps?q=${data.latitude},${data.longitude}`;
-
-    }
+            .getElementById("videoStatus")
+            .textContent =
+            "● LIVE CAMERA + AUDIO CONNECTED";
 
 
-    /* Emergency sound */
-
-    playAlarm();
-
-}
-
-
-/* =================================
-   ALARM
-================================= */
-
-function playAlarm() {
-
-    try {
-
-        const context =
-            new (
-                window.AudioContext ||
-                window.webkitAudioContext
-            )();
+        document
+            .getElementById("cameraState")
+            .textContent =
+            "● ACTIVE";
 
 
-        const oscillator =
-            context.createOscillator();
+        document
+            .getElementById("micState")
+            .textContent =
+            "● ACTIVE";
+
+    };
 
 
-        const gain =
-            context.createGain();
+    /* ======================================
+       CONNECTION STATE
+    ====================================== */
+
+    peerConnection.onconnectionstatechange =
+    () => {
+
+        const state =
+            peerConnection
+            .connectionState;
 
 
-        oscillator.type =
-            "sine";
+        document
+            .getElementById("connectionState")
+            .textContent =
+
+            "● " +
+            state.toUpperCase();
 
 
-        oscillator.frequency.value =
-            800;
+        if (
+            state === "connected"
+        ) {
+
+            document
+                .getElementById("connectionState")
+                .className =
+                "green";
+
+        }
+
+    };
 
 
-        gain.gain.value =
-            .15;
+    /* ======================================
+       RECEIVE VICTIM ICE CANDIDATES
+    ====================================== */
+
+    candidateListener =
+        onChildAdded(
+
+            ref(
+                database,
+                `calls/${callId}/callerCandidates`
+            ),
+
+            async snapshot => {
+
+                const candidate =
+                    snapshot.val();
 
 
-        oscillator.connect(
-            gain
+                if (
+                    candidate
+                ) {
+
+                    try {
+
+                        await peerConnection
+                            .addIceCandidate(
+                                new RTCIceCandidate(
+                                    candidate
+                                )
+                            );
+
+                    }
+
+                    catch(error) {
+
+                        console.error(
+                            error
+                        );
+
+                    }
+
+                }
+
+            }
+
         );
 
 
-        gain.connect(
-            context.destination
-        );
+    /* ======================================
+       RECEIVE OFFER
+    ====================================== */
+
+    const offer =
+        data.offer;
 
 
-        oscillator.start();
-
-
-        setTimeout(
-            () => {
-
-                oscillator.stop();
-
-            },
-            700
-        );
-
-    }
-
-    catch {
+    if (!offer) {
 
         console.log(
-            "Alarm unavailable."
+            "Offer not available."
         );
+
+        return;
 
     }
 
-}
+
+    await peerConnection
+        .setRemoteDescription(
+
+            new RTCSessionDescription(
+                offer
+            )
+
+        );
 
 
-/* =================================
-   DISPATCH
-================================= */
+    /* ======================================
+       CREATE ANSWER
+    ====================================== */
 
-window.dispatch =
-function() {
-
-    alert(
-        "🚔 DEMO RESPONSE\n\nPolice unit dispatched.\n\nNearest response team has been notified."
-    );
-
-};
+    const answer =
+        await peerConnection
+        .createAnswer();
 
 
-/* =================================
-   CLEAR
-================================= */
+    await peerConnection
+        .setLocalDescription(
+            answer
+        );
 
-window.clearEmergency =
-async function() {
 
     await set(
 
         ref(
             database,
-            "emergency/current"
+            `calls/${callId}/answer`
         ),
 
-        null
+        {
+
+            type:
+            answer.type,
+
+            sdp:
+            answer.sdp
+
+        }
 
     );
+
+
+    /* ======================================
+       SEND POLICE ICE CANDIDATES
+    ====================================== */
+
+    peerConnection.onicecandidate =
+    async event => {
+
+        if (
+            event.candidate
+        ) {
+
+            const candidateRef =
+                push(
+
+                    ref(
+                        database,
+                        `calls/${callId}/calleeCandidates`
+                    )
+
+                );
+
+
+            await set(
+
+                candidateRef,
+
+                event.candidate.toJSON()
+
+            );
+
+        }
+
+    };
+
+}
+
+
+/* ==========================================
+   DISPATCH
+========================================== */
+
+window.dispatchPolice =
+function() {
+
+    alert(
+
+        "🚔 DEMO RESPONSE\n\n" +
+
+        "Police response unit dispatched.\n\n" +
+
+        "This is a Science Fest simulation."
+
+    );
+
+};
+
+
+/* ==========================================
+   RESOLVE
+========================================== */
+
+window.resolveEmergency =
+async function() {
+
+    if (
+        currentCallId
+    ) {
+
+        await set(
+
+            ref(
+                database,
+                `calls/${currentCallId}/status`
+            ),
+
+            "RESOLVED"
+
+        );
+
+    }
+
+
+    if (
+        peerConnection
+    ) {
+
+        peerConnection.close();
+
+        peerConnection =
+        null;
+
+    }
+
+
+    document
+        .getElementById("emergency")
+        .classList
+        .remove("active");
+
+
+    document
+        .getElementById("waiting")
+        .style.display =
+        "block";
+
+
+    document
+        .getElementById("remoteVideo")
+        .srcObject =
+        null;
+
+
+    currentCallId =
+        null;
 
 };
 
