@@ -746,15 +746,68 @@ ONLINE
 id="cameraContainer"
 class="camera-container">
 
+<div style="
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+">
+
+<div>
+
+<p style="
+font-size:12px;
+font-weight:bold;
+margin-bottom:5px;
+">
+🤳 FRONT CAMERA
+</p>
+
 <video
-id="localVideo"
+id="frontVideo"
 autoplay
 playsinline
-muted>
+muted
+style="
+width:100%;
+border-radius:15px;
+background:#000;
+">
 </video>
 
+</div>
+
+
+<div>
+
+<p style="
+font-size:12px;
+font-weight:bold;
+margin-bottom:5px;
+">
+📷 BACK CAMERA
+</p>
+
+<video
+id="backVideo"
+autoplay
+playsinline
+muted
+style="
+width:100%;
+border-radius:15px;
+background:#000;
+">
+</video>
+
+</div>
+
+</div>
+
+
 <div class="camera-status">
-● YOUR CAMERA IS STREAMING
+
+● FRONT + BACK CAMERA STREAMING
+
 </div>
 
 </div>
