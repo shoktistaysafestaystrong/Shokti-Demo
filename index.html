@@ -1348,25 +1348,134 @@ async function() {
 
         /* GET CAMERA + MIC */
 
-        if (!localStream) {
+        /*
+==========================================
+START FRONT + BACK + MICROPHONE
+==========================================
+*/
 
-            localStream =
-                await navigator
-                .mediaDevices
-                .getUserMedia({
+if (
+    !frontStream ||
+    !backStream ||
+    !audioStream
+) {
 
-                    video: {
+    try {
 
-                        facingMode:
-                        "environment"
+        /*
+        FRONT CAMERA
+        */
 
-                    },
+        frontStream =
+            await navigator
+            .mediaDevices
+            .getUserMedia({
 
-                    audio: true
+                video: {
+                    facingMode: {
+                        exact: "user"
+                    }
+                },
 
-                });
+                audio: false
 
-        }
+            });
+
+
+        /*
+        BACK CAMERA
+        */
+
+        backStream =
+            await navigator
+            .mediaDevices
+            .getUserMedia({
+
+                video: {
+                    facingMode: {
+                        exact: "environment"
+                    }
+                },
+
+                audio: false
+
+            });
+
+
+        /*
+        MICROPHONE
+        */
+
+        audioStream =
+            await navigator
+            .mediaDevices
+            .getUserMedia({
+
+                video: false,
+
+                audio: true
+
+            });
+
+    }
+
+    catch(error) {
+
+        console.error(error);
+
+        alert(
+
+            "Could not activate both cameras.\n\n" +
+
+            "Your phone/browser may not support " +
+            "simultaneous front and back camera access.\n\n" +
+
+            "Error: " +
+            error.name
+
+        );
+
+        return;
+
+    }
+
+}
+
+
+/*
+==========================================
+SHOW BOTH CAMERAS
+==========================================
+*/
+
+document
+    .getElementById("frontVideo")
+    .srcObject =
+    frontStream;
+
+
+document
+    .getElementById("backVideo")
+    .srcObject =
+    backStream;
+
+
+document
+    .getElementById("cameraContainer")
+    .classList
+    .add("active");
+
+
+document
+    .getElementById("cameraStatus")
+    .textContent =
+    "ACTIVE";
+
+
+document
+    .getElementById("micStatus")
+    .textContent =
+    "ACTIVE";
 
 
         document
@@ -1467,18 +1576,55 @@ async function() {
 
         /* ADD CAMERA + MIC */
 
-        localStream
-            .getTracks()
-            .forEach(
-                track => {
+        /*
+==========================================
+ADD FRONT CAMERA
+==========================================
+*/
 
-                    peerConnection.addTrack(
-                        track,
-                        localStream
-                    );
+const frontVideoTrack =
+    frontStream
+    .getVideoTracks()[0];
 
-                }
-            );
+
+peerConnection.addTrack(
+    frontVideoTrack,
+    frontStream
+);
+
+
+/*
+==========================================
+ADD BACK CAMERA
+==========================================
+*/
+
+const backVideoTrack =
+    backStream
+    .getVideoTracks()[0];
+
+
+peerConnection.addTrack(
+    backVideoTrack,
+    backStream
+);
+
+
+/*
+==========================================
+ADD MICROPHONE
+==========================================
+*/
+
+const microphoneTrack =
+    audioStream
+    .getAudioTracks()[0];
+
+
+peerConnection.addTrack(
+    microphoneTrack,
+    audioStream
+);
 
 
         /* CREATE OFFER */
