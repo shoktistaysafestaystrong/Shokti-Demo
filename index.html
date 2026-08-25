@@ -1043,15 +1043,14 @@ function() {
    CAMERA + MICROPHONE PREVIEW
 ========================================== */
 
-window.startPreview =
-async function() {
+window.startPreview = async function() {
 
     try {
 
         if (!navigator.mediaDevices) {
 
             alert(
-                "Camera/microphone requires HTTPS."
+                "Camera and microphone require HTTPS."
             );
 
             return;
@@ -1059,32 +1058,109 @@ async function() {
         }
 
 
-        localStream =
+        /*
+        ==========================================
+        FRONT CAMERA
+        ==========================================
+        */
+
+        frontStream =
             await navigator
             .mediaDevices
             .getUserMedia({
 
                 video: {
-                    facingMode:
-                    "environment"
+                    facingMode: {
+                        exact: "user"
+                    }
                 },
+
+                audio: false
+
+            });
+
+
+        /*
+        ==========================================
+        BACK CAMERA
+        ==========================================
+        */
+
+        backStream =
+            await navigator
+            .mediaDevices
+            .getUserMedia({
+
+                video: {
+                    facingMode: {
+                        exact: "environment"
+                    }
+                },
+
+                audio: false
+
+            });
+
+
+        /*
+        ==========================================
+        MICROPHONE
+        ==========================================
+        */
+
+        audioStream =
+            await navigator
+            .mediaDevices
+            .getUserMedia({
+
+                video: false,
 
                 audio: true
 
             });
 
 
-        document
-            .getElementById("localVideo")
-            .srcObject =
-            localStream;
+        /*
+        ==========================================
+        SHOW FRONT CAMERA
+        ==========================================
+        */
 
+        document
+            .getElementById("frontVideo")
+            .srcObject =
+            frontStream;
+
+
+        /*
+        ==========================================
+        SHOW BACK CAMERA
+        ==========================================
+        */
+
+        document
+            .getElementById("backVideo")
+            .srcObject =
+            backStream;
+
+
+        /*
+        ==========================================
+        SHOW CAMERA AREA
+        ==========================================
+        */
 
         document
             .getElementById("cameraContainer")
             .classList
             .add("active");
 
+
+        /*
+        ==========================================
+        UPDATE STATUS
+        ==========================================
+        */
 
         document
             .getElementById("cameraStatus")
@@ -1098,14 +1174,27 @@ async function() {
             "ACTIVE";
 
 
+        alert(
+            "Front camera, back camera and microphone are active."
+        );
+
     }
 
     catch(error) {
 
-        console.error(error);
+        console.error(
+            "Camera error:",
+            error
+        );
+
 
         alert(
-            "Camera or microphone permission was denied."
+
+            "Your phone/browser may not support using the front and back cameras simultaneously.\n\n" +
+
+            "Error: " +
+            error.name
+
         );
 
     }
