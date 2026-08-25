@@ -8,7 +8,7 @@
 <meta name="viewport"
       content="width=device-width, initial-scale=1.0">
 
-<title>SHOKTI - Stay Safe. Stay Strong.</title>
+<title>SHOKTI — Victim</title>
 
 <style>
 
@@ -20,7 +20,6 @@
 }
 
 body {
-
     min-height: 100vh;
 
     background:
@@ -31,26 +30,17 @@ body {
         );
 
     color: #29202c;
-
 }
 
 .app {
-
     max-width: 480px;
-
     min-height: 100vh;
-
     margin: auto;
-
     background: white;
 
     box-shadow:
-        0 0 40px
-        rgba(0,0,0,0.08);
-
+        0 0 40px rgba(0,0,0,.08);
 }
-
-/* HEADER */
 
 .header {
 
@@ -67,17 +57,12 @@ body {
 
     border-radius:
         0 0 30px 30px;
-
 }
 
 .logo {
-
     display: flex;
-
     align-items: center;
-
     gap: 12px;
-
 }
 
 .logo-circle {
@@ -88,57 +73,39 @@ body {
     border-radius: 15px;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
     background:
-        rgba(255,255,255,0.2);
+        rgba(255,255,255,.2);
 
     font-size: 25px;
-
     font-weight: bold;
-
 }
 
 .logo h1 {
-
     letter-spacing: 3px;
-
 }
 
 .logo p {
-
     font-size: 10px;
-
     opacity: .9;
-
 }
 
-/* SCREENS */
-
 .screen {
-
     display: none;
-
     padding: 25px 20px;
-
 }
 
 .screen.active {
-
     display: block;
-
 }
 
 /* WELCOME */
 
 .welcome {
-
     text-align: center;
-
     padding-top: 50px;
-
 }
 
 .welcome-icon {
@@ -158,26 +125,19 @@ body {
         );
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
     font-size: 60px;
-
 }
 
 .welcome h2 {
-
     margin-top: 25px;
-
     font-size: 28px;
-
 }
 
 .welcome h2 span {
-
     color: #e91e63;
-
 }
 
 .welcome p {
@@ -187,7 +147,6 @@ body {
     line-height: 1.6;
 
     margin-top: 12px;
-
 }
 
 .tagline {
@@ -197,15 +156,12 @@ body {
     color: #7b1fa2;
 
     font-weight: bold;
-
 }
 
 /* FORM */
 
 h2 {
-
     margin-bottom: 8px;
-
 }
 
 .subtitle {
@@ -217,13 +173,10 @@ h2 {
     line-height: 1.5;
 
     margin-bottom: 20px;
-
 }
 
 .group {
-
     margin-bottom: 15px;
-
 }
 
 .group label {
@@ -235,7 +188,6 @@ h2 {
     font-weight: bold;
 
     margin-bottom: 7px;
-
 }
 
 .group input,
@@ -250,16 +202,13 @@ h2 {
     border: 1px solid #ddd;
 
     outline: none;
-
 }
 
 .group input:focus {
-
     border-color: #e91e63;
-
 }
 
-/* BUTTON */
+/* BUTTONS */
 
 .primary {
 
@@ -287,7 +236,6 @@ h2 {
     cursor: pointer;
 
     margin-top: 10px;
-
 }
 
 .secondary {
@@ -304,30 +252,23 @@ h2 {
 
     margin-top: 10px;
 
+    cursor: pointer;
 }
 
 /* DASHBOARD */
 
 .greeting {
-
     margin-bottom: 20px;
-
 }
 
 .greeting p {
-
     color: #777;
-
     font-size: 13px;
-
 }
 
 .panic {
-
     text-align: center;
-
     margin: 30px 0;
-
 }
 
 .panic-button {
@@ -353,7 +294,6 @@ h2 {
     box-shadow:
         0 15px 40px
         rgba(233,30,99,.35);
-
 }
 
 .panic-button strong {
@@ -361,13 +301,10 @@ h2 {
     display: block;
 
     font-size: 42px;
-
 }
 
 .panic-button span {
-
     font-size: 11px;
-
 }
 
 .panic p {
@@ -377,10 +314,7 @@ h2 {
     color: #777;
 
     font-size: 13px;
-
 }
-
-/* STATUS */
 
 .grid {
 
@@ -390,7 +324,6 @@ h2 {
         1fr 1fr;
 
     gap: 12px;
-
 }
 
 .card {
@@ -400,19 +333,14 @@ h2 {
     border-radius: 17px;
 
     border: 1px solid #eee;
-
 }
 
 .card .icon {
-
     font-size: 23px;
-
 }
 
 .card h4 {
-
     margin-top: 7px;
-
 }
 
 .card p {
@@ -422,7 +350,6 @@ h2 {
     color: #777;
 
     margin-top: 3px;
-
 }
 
 .online {
@@ -430,7 +357,43 @@ h2 {
     color: #159447 !important;
 
     font-weight: bold;
+}
 
+/* CAMERA */
+
+.camera-container {
+
+    margin-top: 20px;
+
+    display: none;
+}
+
+.camera-container.active {
+    display: block;
+}
+
+video {
+
+    width: 100%;
+
+    border-radius: 20px;
+
+    background: black;
+
+    display: block;
+}
+
+.camera-status {
+
+    margin-top: 8px;
+
+    text-align: center;
+
+    font-size: 12px;
+
+    color: #159447;
+
+    font-weight: bold;
 }
 
 /* MODAL */
@@ -442,7 +405,7 @@ h2 {
     inset: 0;
 
     background:
-        rgba(0,0,0,.6);
+        rgba(0,0,0,.65);
 
     display: none;
 
@@ -451,13 +414,10 @@ h2 {
     justify-content: center;
 
     padding: 20px;
-
 }
 
 .modal.show {
-
     display: flex;
-
 }
 
 .modal-box {
@@ -473,13 +433,10 @@ h2 {
     max-width: 390px;
 
     width: 100%;
-
 }
 
 .modal-icon {
-
     font-size: 55px;
-
 }
 
 .modal-box p {
@@ -491,7 +448,6 @@ h2 {
     line-height: 1.5;
 
     margin-top: 10px;
-
 }
 
 </style>
@@ -544,9 +500,8 @@ Welcome to
 
 <p>
 
-A women safety emergency
-response prototype designed
-for Bangladesh.
+Women safety emergency
+response prototype for Bangladesh.
 
 </p>
 
@@ -558,7 +513,7 @@ Your safety. Your strength.
 
 <button
 class="primary"
-onclick="show('register')">
+onclick="showScreen('register')">
 
 Get Started
 
@@ -581,8 +536,8 @@ Create Your Profile
 
 <p class="subtitle">
 
-Register to activate your
-SHOKTI emergency profile.
+Demo registration for the SHOKTI
+Science Fest prototype.
 
 </p>
 
@@ -595,7 +550,7 @@ Full Name
 
 <input
 id="name"
-placeholder="Your name">
+placeholder="Demo User">
 
 </div>
 
@@ -621,7 +576,7 @@ Email
 
 <input
 id="email"
-placeholder="example@email.com">
+placeholder="demo@example.com">
 
 </div>
 
@@ -629,15 +584,13 @@ placeholder="example@email.com">
 <div class="group">
 
 <label>
-Identification
+Identification Type
 </label>
 
 <select id="idType">
 
 <option>NID</option>
-
 <option>Passport</option>
-
 <option>Date of Birth</option>
 
 </select>
@@ -648,19 +601,19 @@ Identification
 <div class="group">
 
 <label>
-ID / Date of Birth
+Demo Identification
 </label>
 
 <input
 id="idNumber"
-placeholder="Enter information">
+placeholder="DEMO-123456">
 
 </div>
 
 
 <button
 class="primary"
-onclick="register()">
+onclick="registerUser()">
 
 Activate SHOKTI
 
@@ -678,16 +631,17 @@ class="screen">
 <div class="greeting">
 
 <h2>
+
 Hello,
 <span id="userName">
 User
 </span>
 👋
+
 </h2>
 
 <p>
-Your SHOKTI protection system
-is active.
+Your SHOKTI protection system is active.
 </p>
 
 </div>
@@ -697,7 +651,7 @@ is active.
 
 <button
 class="panic-button"
-onclick="panic()">
+onclick="startEmergency()">
 
 <strong>
 PANIC
@@ -728,8 +682,8 @@ Press once if you are in danger.
 Location
 </h4>
 
-<p id="location">
-Waiting...
+<p id="locationStatus">
+READY
 </p>
 
 </div>
@@ -738,15 +692,15 @@ Waiting...
 <div class="card">
 
 <div class="icon">
-📷
+🎥
 </div>
 
 <h4>
 Camera
 </h4>
 
-<p id="camera">
-Ready
+<p id="cameraStatus">
+READY
 </p>
 
 </div>
@@ -762,8 +716,8 @@ Ready
 Microphone
 </h4>
 
-<p id="microphone">
-Ready
+<p id="micStatus">
+READY
 </p>
 
 </div>
@@ -788,29 +742,48 @@ ONLINE
 </div>
 
 
+<div
+id="cameraContainer"
+class="camera-container">
+
+<video
+id="localVideo"
+autoplay
+playsinline
+muted>
+</video>
+
+<div class="camera-status">
+● YOUR CAMERA IS STREAMING
+</div>
+
+</div>
+
+
 <button
 class="secondary"
-onclick="testLocation()">
+onclick="startPreview()">
+
+🎥 Test Camera & Microphone
+
+</button>
+
+
+<button
+class="secondary"
+onclick="getLocation()">
 
 📍 Test My Location
 
 </button>
 
 
-<button
-class="secondary"
-onclick="testCamera()">
-
-📷 Test Camera & Microphone
-
-</button>
-
 </section>
 
 </div>
 
 
-<!-- MODAL -->
+<!-- EMERGENCY MODAL -->
 
 <div
 id="modal"
@@ -828,8 +801,8 @@ EMERGENCY ACTIVATED
 
 <p id="modalText">
 
-Sending emergency information
-to the SHOKTI emergency network...
+Connecting to the SHOKTI Police
+Control Room...
 
 </p>
 
@@ -837,7 +810,7 @@ to the SHOKTI emergency network...
 class="primary"
 onclick="closeModal()">
 
-Continue
+Close
 
 </button>
 
@@ -845,8 +818,6 @@ Continue
 
 </div>
 
-
-<!-- FIREBASE -->
 
 <script type="module">
 
@@ -860,28 +831,48 @@ from
 import {
     getDatabase,
     ref,
-    set
+    set,
+    onValue,
+    onChildAdded,
+    push
 }
 from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-database.js";
 
 
-/* =================================
-   YOUR FIREBASE CONFIGURATION
-================================= */
+/* ==========================================
+   🔥 PASTE YOUR FIREBASE CONFIG HERE
+========================================== */
 
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyCx0hgLUR610_XUM16rbCekxsaqklOcwLI",
-  authDomain: "shokti-45501.firebaseapp.com",
-  databaseURL: "https://shokti-45501-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "shokti-45501",
-  storageBucket: "shokti-45501.firebasestorage.app",
-  messagingSenderId: "1020920544206",
-  appId: "1:1020920544206:web:3bda1aa2b53fc2068e099f",
-  measurementId: "G-8CTP48LXNW"
+
+    apiKey:
+    "PASTE_YOUR_API_KEY",
+
+    authDomain:
+    "PASTE_YOUR_AUTH_DOMAIN",
+
+    databaseURL:
+    "PASTE_YOUR_DATABASE_URL",
+
+    projectId:
+    "PASTE_YOUR_PROJECT_ID",
+
+    storageBucket:
+    "PASTE_YOUR_STORAGE_BUCKET",
+
+    messagingSenderId:
+    "PASTE_YOUR_MESSAGING_SENDER_ID",
+
+    appId:
+    "PASTE_YOUR_APP_ID"
+
 };
 
+
+/* ==========================================
+   FIREBASE
+========================================== */
 
 const app =
 initializeApp(firebaseConfig);
@@ -890,32 +881,35 @@ const database =
 getDatabase(app);
 
 
-/* =================================
-   USER DATA
-================================= */
+/* ==========================================
+   VARIABLES
+========================================== */
 
-let currentUser = {
+let currentUser = null;
 
-    name: "",
-    phone: "",
-    email: "",
-    idType: "",
-    idNumber: ""
+let localStream = null;
 
-};
+let peerConnection = null;
+
+let currentCallId = null;
+
+let answerListener = null;
+
+let candidateListener = null;
 
 
-/* =================================
+/* ==========================================
    SCREEN
-================================= */
+========================================== */
 
-window.show = function(id) {
+window.showScreen =
+function(id) {
 
     document
         .querySelectorAll(".screen")
         .forEach(
-            s =>
-            s.classList.remove("active")
+            screen =>
+            screen.classList.remove("active")
         );
 
     document
@@ -925,11 +919,12 @@ window.show = function(id) {
 };
 
 
-/* =================================
+/* ==========================================
    REGISTER
-================================= */
+========================================== */
 
-window.register = function() {
+window.registerUser =
+function() {
 
     const name =
         document
@@ -969,7 +964,7 @@ window.register = function() {
     ) {
 
         alert(
-            "Please complete all fields."
+            "Please complete the demo registration."
         );
 
         return;
@@ -990,24 +985,100 @@ window.register = function() {
 
     document
         .getElementById("userName")
-        .textContent = name;
+        .textContent =
+        name;
 
 
-    show("dashboard");
+    showScreen("dashboard");
 
 };
 
 
-/* =================================
-   LOCATION
-================================= */
+/* ==========================================
+   CAMERA + MICROPHONE PREVIEW
+========================================== */
 
-window.testLocation = function() {
+window.startPreview =
+async function() {
+
+    try {
+
+        if (!navigator.mediaDevices) {
+
+            alert(
+                "Camera/microphone requires HTTPS."
+            );
+
+            return;
+
+        }
+
+
+        localStream =
+            await navigator
+            .mediaDevices
+            .getUserMedia({
+
+                video: {
+                    facingMode:
+                    "environment"
+                },
+
+                audio: true
+
+            });
+
+
+        document
+            .getElementById("localVideo")
+            .srcObject =
+            localStream;
+
+
+        document
+            .getElementById("cameraContainer")
+            .classList
+            .add("active");
+
+
+        document
+            .getElementById("cameraStatus")
+            .textContent =
+            "ACTIVE";
+
+
+        document
+            .getElementById("micStatus")
+            .textContent =
+            "ACTIVE";
+
+
+    }
+
+    catch(error) {
+
+        console.error(error);
+
+        alert(
+            "Camera or microphone permission was denied."
+        );
+
+    }
+
+};
+
+
+/* ==========================================
+   LOCATION
+========================================== */
+
+window.getLocation =
+function() {
 
     if (!navigator.geolocation) {
 
         alert(
-            "Location is not supported."
+            "Geolocation is not supported."
         );
 
         return;
@@ -1016,128 +1087,116 @@ window.testLocation = function() {
 
 
     document
-        .getElementById("location")
+        .getElementById("locationStatus")
         .textContent =
-        "Requesting GPS...";
+        "LOCATING...";
 
 
     navigator
-    .geolocation
-    .getCurrentPosition(
+        .geolocation
+        .getCurrentPosition(
 
-        position => {
+            position => {
 
-            const lat =
-                position
-                .coords
-                .latitude
-                .toFixed(6);
+                window.currentLocation = {
 
-            const lng =
-                position
-                .coords
-                .longitude
-                .toFixed(6);
+                    latitude:
+                    position.coords.latitude,
+
+                    longitude:
+                    position.coords.longitude
+
+                };
 
 
-            document
-                .getElementById("location")
-                .textContent =
-                `${lat}, ${lng}`;
+                document
+                    .getElementById("locationStatus")
+                    .textContent =
+                    "ACTIVE";
 
 
-            window.currentLocation = {
+            },
 
-                latitude:
-                position.coords.latitude,
+            error => {
 
-                longitude:
-                position.coords.longitude
+                console.error(error);
 
-            };
+                document
+                    .getElementById("locationStatus")
+                    .textContent =
+                    "DENIED";
 
-        },
+            },
 
-        () => {
+            {
 
-            document
-                .getElementById("location")
-                .textContent =
-                "Permission denied.";
+                enableHighAccuracy: true,
 
-        },
+                timeout: 10000
 
-        {
-            enableHighAccuracy: true
+            }
+
+        );
+
+};
+
+
+/* ==========================================
+   CREATE WEBRTC CONNECTION
+========================================== */
+
+function createPeerConnection() {
+
+    peerConnection =
+        new RTCPeerConnection({
+
+            iceServers: [
+
+                {
+                    urls:
+                    "stun:stun.l.google.com:19302"
+                }
+
+            ]
+
+        });
+
+
+    peerConnection.onicecandidate =
+    async event => {
+
+        if (
+            event.candidate &&
+            currentCallId
+        ) {
+
+            const candidateRef =
+                push(
+                    ref(
+                        database,
+                        `calls/${currentCallId}/callerCandidates`
+                    )
+                );
+
+
+            await set(
+                candidateRef,
+                event.candidate.toJSON()
+            );
+
         }
 
-    );
+    };
 
-};
-
-
-/* =================================
-   CAMERA
-================================= */
-
-window.testCamera = async function() {
-
-    try {
-
-        await navigator
-            .mediaDevices
-            .getUserMedia({
-
-                video: true,
-                audio: true
-
-            });
+}
 
 
-        document
-            .getElementById("camera")
-            .textContent =
-            "ACTIVE";
-
-        document
-            .getElementById("camera")
-            .classList
-            .add("online");
-
-
-        document
-            .getElementById("microphone")
-            .textContent =
-            "ACTIVE";
-
-        document
-            .getElementById("microphone")
-            .classList
-            .add("online");
-
-
-        alert(
-            "Camera and microphone permission granted."
-        );
-
-    }
-
-    catch {
-
-        alert(
-            "Camera/microphone permission denied."
-        );
-
-    }
-
-};
-
-
-/* =================================
+/* ==========================================
    PANIC
-================================= */
+========================================== */
 
-window.panic = async function() {
+window.startEmergency =
+async function() {
 
     document
         .getElementById("modal")
@@ -1148,51 +1207,108 @@ window.panic = async function() {
     document
         .getElementById("modalText")
         .textContent =
-        "Sending emergency information to the SHOKTI emergency network...";
+        "Opening camera and microphone...";
 
 
-    let location = {
+    try {
 
-        latitude: null,
-        longitude: null
+        /* GET CAMERA + MIC */
 
-    };
+        if (!localStream) {
+
+            localStream =
+                await navigator
+                .mediaDevices
+                .getUserMedia({
+
+                    video: {
+
+                        facingMode:
+                        "environment"
+
+                    },
+
+                    audio: true
+
+                });
+
+        }
 
 
-    if (
-        navigator.geolocation
-    ) {
+        document
+            .getElementById("localVideo")
+            .srcObject =
+            localStream;
+
+
+        document
+            .getElementById("cameraContainer")
+            .classList
+            .add("active");
+
+
+        document
+            .getElementById("cameraStatus")
+            .textContent =
+            "ACTIVE";
+
+
+        document
+            .getElementById("micStatus")
+            .textContent =
+            "ACTIVE";
+
+
+        /* LOCATION */
+
+        let location = {
+
+            latitude: null,
+            longitude: null
+
+        };
+
 
         try {
 
-            const position =
+            location =
                 await new Promise(
                     (resolve, reject) => {
 
                         navigator
                             .geolocation
                             .getCurrentPosition(
-                                resolve,
+
+                                position => {
+
+                                    resolve({
+
+                                        latitude:
+                                        position.coords.latitude,
+
+                                        longitude:
+                                        position.coords.longitude
+
+                                    });
+
+                                },
+
                                 reject,
+
                                 {
-                                    enableHighAccuracy: true,
-                                    timeout: 8000
+
+                                    enableHighAccuracy:
+                                    true,
+
+                                    timeout:
+                                    10000
+
                                 }
+
                             );
 
                     }
                 );
-
-
-            location = {
-
-                latitude:
-                position.coords.latitude,
-
-                longitude:
-                position.coords.longitude
-
-            };
 
         }
 
@@ -1204,66 +1320,104 @@ window.panic = async function() {
 
         }
 
-    }
+
+        /* CREATE CALL */
+
+        currentCallId =
+            "SHK-" +
+            Date.now();
 
 
-    const incidentId =
-        "SHK-" +
-        Date.now();
+        createPeerConnection();
 
 
-    const emergencyData = {
+        /* ADD CAMERA + MIC */
 
-        incidentId,
+        localStream
+            .getTracks()
+            .forEach(
+                track => {
 
-        name:
-        currentUser.name,
+                    peerConnection.addTrack(
+                        track,
+                        localStream
+                    );
 
-        phone:
-        currentUser.phone,
-
-        email:
-        currentUser.email,
-
-        idType:
-        currentUser.idType,
-
-        timestamp:
-        Date.now(),
-
-        status:
-        "ACTIVE",
-
-        latitude:
-        location.latitude,
-
-        longitude:
-        location.longitude,
-
-        camera:
-        "ACTIVE",
-
-        microphone:
-        "ACTIVE",
-
-        trigger:
-        "PANIC BUTTON"
-
-    };
+                }
+            );
 
 
-    try {
+        /* CREATE OFFER */
+
+        const offer =
+            await peerConnection
+            .createOffer();
+
+
+        await peerConnection
+            .setLocalDescription(
+                offer
+            );
+
+
+        /* SAVE EMERGENCY + OFFER */
 
         await set(
 
             ref(
                 database,
-                "emergency/current"
+                `calls/${currentCallId}`
             ),
 
-            emergencyData
+            {
+
+                status:
+                "ACTIVE",
+
+                incidentId:
+                currentCallId,
+
+                victim: {
+
+                    name:
+                    currentUser.name,
+
+                    phone:
+                    currentUser.phone,
+
+                    email:
+                    currentUser.email
+
+                },
+
+                location: location,
+
+                timestamp:
+                Date.now(),
+
+                offer: {
+
+                    type:
+                    offer.type,
+
+                    sdp:
+                    offer.sdp
+
+                }
+
+            }
 
         );
+
+
+        document
+            .getElementById("locationStatus")
+            .textContent =
+            location.latitude
+            ?
+            "ACTIVE"
+            :
+            "UNAVAILABLE";
 
 
         document
@@ -1272,18 +1426,117 @@ window.panic = async function() {
 
             `
             <strong>
-            Emergency sent successfully.
+            Emergency signal sent.
             </strong>
+
             <br><br>
 
             Incident ID:
-            ${incidentId}
+            ${currentCallId}
 
             <br><br>
 
-            The SHOKTI Police Control Room
-            has received the emergency.
+            Waiting for the SHOKTI
+            Police Control Room...
             `;
+
+
+        /* WAIT FOR ANSWER */
+
+        answerListener =
+        onValue(
+
+            ref(
+                database,
+                `calls/${currentCallId}/answer`
+            ),
+
+            async snapshot => {
+
+                const answer =
+                    snapshot.val();
+
+
+                if (
+                    answer &&
+                    peerConnection &&
+                    !peerConnection.currentRemoteDescription
+                ) {
+
+                    await peerConnection
+                        .setRemoteDescription(
+                            new RTCSessionDescription(
+                                answer
+                            )
+                        );
+
+
+                    document
+                        .getElementById("modalText")
+                        .innerHTML =
+
+                        `
+                        <strong>
+                        🚨 POLICE CONNECTED
+                        </strong>
+
+                        <br><br>
+
+                        Your live camera and
+                        microphone are now connected
+                        to the demo Police Control Room.
+                        `;
+
+                }
+
+            }
+
+        );
+
+
+        /* WAIT FOR POLICE ICE CANDIDATES */
+
+        candidateListener =
+        onChildAdded(
+
+            ref(
+                database,
+                `calls/${currentCallId}/calleeCandidates`
+            ),
+
+            async snapshot => {
+
+                const candidate =
+                    snapshot.val();
+
+
+                if (
+                    candidate &&
+                    peerConnection
+                ) {
+
+                    try {
+
+                        await peerConnection
+                            .addIceCandidate(
+                                new RTCIceCandidate(
+                                    candidate
+                                )
+                            );
+
+                    }
+
+                    catch(error) {
+
+                        console.error(error);
+
+                    }
+
+                }
+
+            }
+
+        );
 
     }
 
@@ -1294,18 +1547,19 @@ window.panic = async function() {
         document
             .getElementById("modalText")
             .textContent =
-            "Unable to contact SHOKTI server.";
+            "Could not start the emergency demo. Please check camera/microphone permissions.";
 
     }
 
 };
 
 
-/* =================================
+/* ==========================================
    CLOSE MODAL
-================================= */
+========================================== */
 
-window.closeModal = function() {
+window.closeModal =
+function() {
 
     document
         .getElementById("modal")
@@ -1317,4 +1571,5 @@ window.closeModal = function() {
 </script>
 
 </body>
+
 </html>
