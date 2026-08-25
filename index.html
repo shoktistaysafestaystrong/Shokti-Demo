@@ -1,1 +1,1333 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>SHOKTI - Stay Safe. Stay Strong.</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+
+    min-height: 100vh;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff0f6,
+            #f5eaff
+        );
+
+    color: #29202c;
+
+}
+
+.app {
+
+    max-width: 480px;
+
+    min-height: 100vh;
+
+    margin: auto;
+
+    background: white;
+
+    box-shadow:
+        0 0 40px
+        rgba(0,0,0,0.08);
+
+}
+
+/* HEADER */
+
+.header {
+
+    padding: 22px;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e91e63,
+            #7b1fa2
+        );
+
+    border-radius:
+        0 0 30px 30px;
+
+}
+
+.logo {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+}
+
+.logo-circle {
+
+    width: 48px;
+    height: 48px;
+
+    border-radius: 15px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background:
+        rgba(255,255,255,0.2);
+
+    font-size: 25px;
+
+    font-weight: bold;
+
+}
+
+.logo h1 {
+
+    letter-spacing: 3px;
+
+}
+
+.logo p {
+
+    font-size: 10px;
+
+    opacity: .9;
+
+}
+
+/* SCREENS */
+
+.screen {
+
+    display: none;
+
+    padding: 25px 20px;
+
+}
+
+.screen.active {
+
+    display: block;
+
+}
+
+/* WELCOME */
+
+.welcome {
+
+    text-align: center;
+
+    padding-top: 50px;
+
+}
+
+.welcome-icon {
+
+    width: 120px;
+    height: 120px;
+
+    margin: auto;
+
+    border-radius: 40px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f8bbd0,
+            #e1bee7
+        );
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 60px;
+
+}
+
+.welcome h2 {
+
+    margin-top: 25px;
+
+    font-size: 28px;
+
+}
+
+.welcome h2 span {
+
+    color: #e91e63;
+
+}
+
+.welcome p {
+
+    color: #777;
+
+    line-height: 1.6;
+
+    margin-top: 12px;
+
+}
+
+.tagline {
+
+    margin: 20px;
+
+    color: #7b1fa2;
+
+    font-weight: bold;
+
+}
+
+/* FORM */
+
+h2 {
+
+    margin-bottom: 8px;
+
+}
+
+.subtitle {
+
+    color: #777;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
+    margin-bottom: 20px;
+
+}
+
+.group {
+
+    margin-bottom: 15px;
+
+}
+
+.group label {
+
+    display: block;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    margin-bottom: 7px;
+
+}
+
+.group input,
+.group select {
+
+    width: 100%;
+
+    padding: 14px;
+
+    border-radius: 13px;
+
+    border: 1px solid #ddd;
+
+    outline: none;
+
+}
+
+.group input:focus {
+
+    border-color: #e91e63;
+
+}
+
+/* BUTTON */
+
+.primary {
+
+    width: 100%;
+
+    border: none;
+
+    padding: 16px;
+
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e91e63,
+            #7b1fa2
+        );
+
+    color: white;
+
+    font-weight: bold;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    margin-top: 10px;
+
+}
+
+.secondary {
+
+    width: 100%;
+
+    padding: 14px;
+
+    border-radius: 14px;
+
+    border: 1px solid #ddd;
+
+    background: white;
+
+    margin-top: 10px;
+
+}
+
+/* DASHBOARD */
+
+.greeting {
+
+    margin-bottom: 20px;
+
+}
+
+.greeting p {
+
+    color: #777;
+
+    font-size: 13px;
+
+}
+
+.panic {
+
+    text-align: center;
+
+    margin: 30px 0;
+
+}
+
+.panic-button {
+
+    width: 205px;
+    height: 205px;
+
+    border-radius: 50%;
+
+    border: 12px solid #fce4ec;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ec407a,
+            #c2185b
+        );
+
+    color: white;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 15px 40px
+        rgba(233,30,99,.35);
+
+}
+
+.panic-button strong {
+
+    display: block;
+
+    font-size: 42px;
+
+}
+
+.panic-button span {
+
+    font-size: 11px;
+
+}
+
+.panic p {
+
+    margin-top: 15px;
+
+    color: #777;
+
+    font-size: 13px;
+
+}
+
+/* STATUS */
+
+.grid {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 12px;
+
+}
+
+.card {
+
+    padding: 15px;
+
+    border-radius: 17px;
+
+    border: 1px solid #eee;
+
+}
+
+.card .icon {
+
+    font-size: 23px;
+
+}
+
+.card h4 {
+
+    margin-top: 7px;
+
+}
+
+.card p {
+
+    font-size: 12px;
+
+    color: #777;
+
+    margin-top: 3px;
+
+}
+
+.online {
+
+    color: #159447 !important;
+
+    font-weight: bold;
+
+}
+
+/* MODAL */
+
+.modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        rgba(0,0,0,.6);
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+}
+
+.modal.show {
+
+    display: flex;
+
+}
+
+.modal-box {
+
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 25px;
+
+    text-align: center;
+
+    max-width: 390px;
+
+    width: 100%;
+
+}
+
+.modal-icon {
+
+    font-size: 55px;
+
+}
+
+.modal-box p {
+
+    color: #777;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
+    margin-top: 10px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="app">
+
+<header class="header">
+
+<div class="logo">
+
+<div class="logo-circle">
+S
+</div>
+
+<div>
+
+<h1>SHOKTI</h1>
+
+<p>
+STAY SAFE. STAY STRONG.
+</p>
+
+</div>
+
+</div>
+
+</header>
+
+
+<!-- WELCOME -->
+
+<section
+id="welcome"
+class="screen active">
+
+<div class="welcome">
+
+<div class="welcome-icon">
+♀
+</div>
+
+<h2>
+Welcome to
+<span>SHOKTI</span>
+</h2>
+
+<p>
+
+A women safety emergency
+response prototype designed
+for Bangladesh.
+
+</p>
+
+<div class="tagline">
+
+Your safety. Your strength.
+
+</div>
+
+<button
+class="primary"
+onclick="show('register')">
+
+Get Started
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- REGISTER -->
+
+<section
+id="register"
+class="screen">
+
+<h2>
+Create Your Profile
+</h2>
+
+<p class="subtitle">
+
+Register to activate your
+SHOKTI emergency profile.
+
+</p>
+
+
+<div class="group">
+
+<label>
+Full Name
+</label>
+
+<input
+id="name"
+placeholder="Your name">
+
+</div>
+
+
+<div class="group">
+
+<label>
+Phone Number
+</label>
+
+<input
+id="phone"
+placeholder="+880 1XXXXXXXXX">
+
+</div>
+
+
+<div class="group">
+
+<label>
+Email
+</label>
+
+<input
+id="email"
+placeholder="example@email.com">
+
+</div>
+
+
+<div class="group">
+
+<label>
+Identification
+</label>
+
+<select id="idType">
+
+<option>NID</option>
+
+<option>Passport</option>
+
+<option>Date of Birth</option>
+
+</select>
+
+</div>
+
+
+<div class="group">
+
+<label>
+ID / Date of Birth
+</label>
+
+<input
+id="idNumber"
+placeholder="Enter information">
+
+</div>
+
+
+<button
+class="primary"
+onclick="register()">
+
+Activate SHOKTI
+
+</button>
+
+</section>
+
+
+<!-- DASHBOARD -->
+
+<section
+id="dashboard"
+class="screen">
+
+<div class="greeting">
+
+<h2>
+Hello,
+<span id="userName">
+User
+</span>
+👋
+</h2>
+
+<p>
+Your SHOKTI protection system
+is active.
+</p>
+
+</div>
+
+
+<div class="panic">
+
+<button
+class="panic-button"
+onclick="panic()">
+
+<strong>
+PANIC
+</strong>
+
+<span>
+PRESS FOR EMERGENCY
+</span>
+
+</button>
+
+<p>
+Press once if you are in danger.
+</p>
+
+</div>
+
+
+<div class="grid">
+
+<div class="card">
+
+<div class="icon">
+📍
+</div>
+
+<h4>
+Location
+</h4>
+
+<p id="location">
+Waiting...
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">
+📷
+</div>
+
+<h4>
+Camera
+</h4>
+
+<p id="camera">
+Ready
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">
+🎙️
+</div>
+
+<h4>
+Microphone
+</h4>
+
+<p id="microphone">
+Ready
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">
+👮
+</div>
+
+<h4>
+Police Network
+</h4>
+
+<p class="online">
+ONLINE
+</p>
+
+</div>
+
+</div>
+
+
+<button
+class="secondary"
+onclick="testLocation()">
+
+📍 Test My Location
+
+</button>
+
+
+<button
+class="secondary"
+onclick="testCamera()">
+
+📷 Test Camera & Microphone
+
+</button>
+
+</section>
+
+</div>
+
+
+<!-- MODAL -->
+
+<div
+id="modal"
+class="modal">
+
+<div class="modal-box">
+
+<div class="modal-icon">
+🚨
+</div>
+
+<h2>
+EMERGENCY ACTIVATED
+</h2>
+
+<p id="modalText">
+
+Sending emergency information
+to the SHOKTI emergency network...
+
+</p>
+
+<button
+class="primary"
+onclick="closeModal()">
+
+Continue
+
+</button>
+
+</div>
+
+</div>
+
+
+<!-- FIREBASE -->
+
+<script type="module">
+
+import {
+    initializeApp
+}
+from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+
+import {
+    getDatabase,
+    ref,
+    set
+}
+from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-database.js";
+
+
+/* =================================
+   YOUR FIREBASE CONFIGURATION
+================================= */
+
+const firebaseConfig = {
+
+    apiKey:
+    "PASTE_YOUR_API_KEY",
+
+    authDomain:
+    "PASTE_YOUR_AUTH_DOMAIN",
+
+    databaseURL:
+    "PASTE_YOUR_DATABASE_URL",
+
+    projectId:
+    "PASTE_YOUR_PROJECT_ID",
+
+    storageBucket:
+    "PASTE_YOUR_STORAGE_BUCKET",
+
+    messagingSenderId:
+    "PASTE_YOUR_MESSAGING_SENDER_ID",
+
+    appId:
+    "PASTE_YOUR_APP_ID"
+
+};
+
+
+const app =
+initializeApp(firebaseConfig);
+
+const database =
+getDatabase(app);
+
+
+/* =================================
+   USER DATA
+================================= */
+
+let currentUser = {
+
+    name: "",
+    phone: "",
+    email: "",
+    idType: "",
+    idNumber: ""
+
+};
+
+
+/* =================================
+   SCREEN
+================================= */
+
+window.show = function(id) {
+
+    document
+        .querySelectorAll(".screen")
+        .forEach(
+            s =>
+            s.classList.remove("active")
+        );
+
+    document
+        .getElementById(id)
+        .classList.add("active");
+
+};
+
+
+/* =================================
+   REGISTER
+================================= */
+
+window.register = function() {
+
+    const name =
+        document
+        .getElementById("name")
+        .value
+        .trim();
+
+    const phone =
+        document
+        .getElementById("phone")
+        .value
+        .trim();
+
+    const email =
+        document
+        .getElementById("email")
+        .value
+        .trim();
+
+    const idType =
+        document
+        .getElementById("idType")
+        .value;
+
+    const idNumber =
+        document
+        .getElementById("idNumber")
+        .value
+        .trim();
+
+
+    if (
+        !name ||
+        !phone ||
+        !email ||
+        !idNumber
+    ) {
+
+        alert(
+            "Please complete all fields."
+        );
+
+        return;
+
+    }
+
+
+    currentUser = {
+
+        name,
+        phone,
+        email,
+        idType,
+        idNumber
+
+    };
+
+
+    document
+        .getElementById("userName")
+        .textContent = name;
+
+
+    show("dashboard");
+
+};
+
+
+/* =================================
+   LOCATION
+================================= */
+
+window.testLocation = function() {
+
+    if (!navigator.geolocation) {
+
+        alert(
+            "Location is not supported."
+        );
+
+        return;
+
+    }
+
+
+    document
+        .getElementById("location")
+        .textContent =
+        "Requesting GPS...";
+
+
+    navigator
+    .geolocation
+    .getCurrentPosition(
+
+        position => {
+
+            const lat =
+                position
+                .coords
+                .latitude
+                .toFixed(6);
+
+            const lng =
+                position
+                .coords
+                .longitude
+                .toFixed(6);
+
+
+            document
+                .getElementById("location")
+                .textContent =
+                `${lat}, ${lng}`;
+
+
+            window.currentLocation = {
+
+                latitude:
+                position.coords.latitude,
+
+                longitude:
+                position.coords.longitude
+
+            };
+
+        },
+
+        () => {
+
+            document
+                .getElementById("location")
+                .textContent =
+                "Permission denied.";
+
+        },
+
+        {
+            enableHighAccuracy: true
+        }
+
+    );
+
+};
+
+
+/* =================================
+   CAMERA
+================================= */
+
+window.testCamera = async function() {
+
+    try {
+
+        await navigator
+            .mediaDevices
+            .getUserMedia({
+
+                video: true,
+                audio: true
+
+            });
+
+
+        document
+            .getElementById("camera")
+            .textContent =
+            "ACTIVE";
+
+        document
+            .getElementById("camera")
+            .classList
+            .add("online");
+
+
+        document
+            .getElementById("microphone")
+            .textContent =
+            "ACTIVE";
+
+        document
+            .getElementById("microphone")
+            .classList
+            .add("online");
+
+
+        alert(
+            "Camera and microphone permission granted."
+        );
+
+    }
+
+    catch {
+
+        alert(
+            "Camera/microphone permission denied."
+        );
+
+    }
+
+};
+
+
+/* =================================
+   PANIC
+================================= */
+
+window.panic = async function() {
+
+    document
+        .getElementById("modal")
+        .classList
+        .add("show");
+
+
+    document
+        .getElementById("modalText")
+        .textContent =
+        "Sending emergency information to the SHOKTI emergency network...";
+
+
+    let location = {
+
+        latitude: null,
+        longitude: null
+
+    };
+
+
+    if (
+        navigator.geolocation
+    ) {
+
+        try {
+
+            const position =
+                await new Promise(
+                    (resolve, reject) => {
+
+                        navigator
+                            .geolocation
+                            .getCurrentPosition(
+                                resolve,
+                                reject,
+                                {
+                                    enableHighAccuracy: true,
+                                    timeout: 8000
+                                }
+                            );
+
+                    }
+                );
+
+
+            location = {
+
+                latitude:
+                position.coords.latitude,
+
+                longitude:
+                position.coords.longitude
+
+            };
+
+        }
+
+        catch {
+
+            console.log(
+                "Location unavailable."
+            );
+
+        }
+
+    }
+
+
+    const incidentId =
+        "SHK-" +
+        Date.now();
+
+
+    const emergencyData = {
+
+        incidentId,
+
+        name:
+        currentUser.name,
+
+        phone:
+        currentUser.phone,
+
+        email:
+        currentUser.email,
+
+        idType:
+        currentUser.idType,
+
+        timestamp:
+        Date.now(),
+
+        status:
+        "ACTIVE",
+
+        latitude:
+        location.latitude,
+
+        longitude:
+        location.longitude,
+
+        camera:
+        "ACTIVE",
+
+        microphone:
+        "ACTIVE",
+
+        trigger:
+        "PANIC BUTTON"
+
+    };
+
+
+    try {
+
+        await set(
+
+            ref(
+                database,
+                "emergency/current"
+            ),
+
+            emergencyData
+
+        );
+
+
+        document
+            .getElementById("modalText")
+            .innerHTML =
+
+            `
+            <strong>
+            Emergency sent successfully.
+            </strong>
+            <br><br>
+
+            Incident ID:
+            ${incidentId}
+
+            <br><br>
+
+            The SHOKTI Police Control Room
+            has received the emergency.
+            `;
+
+    }
+
+    catch(error) {
+
+        console.error(error);
+
+        document
+            .getElementById("modalText")
+            .textContent =
+            "Unable to contact SHOKTI server.";
+
+    }
+
+};
+
+
+/* =================================
+   CLOSE MODAL
+================================= */
+
+window.closeModal = function() {
+
+    document
+        .getElementById("modal")
+        .classList
+        .remove("show");
+
+};
+
+</script>
+
+</body>
+</html>
