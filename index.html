@@ -1042,53 +1042,50 @@ function() {
    CAMERA + MICROPHONE PREVIEW
 ========================================== */
 
-window.startPreview = async function() {
+// other JavaScript code
+// Firebase functions
+// other functions
 
+
+// ==========================================
+// SHOKTI ADAPTIVE CAMERA SYSTEM
+// ==========================================
+
+async function startSHOKTICameras() {
+
+    console.log("SHOKTI: Starting camera system...");
+
+    frontStream = null;
+    backStream = null;
+    audioStream = null;
+
+
+    // MICROPHONE
     try {
 
-        if (!navigator.mediaDevices) {
-
-            alert(
-                "Camera and microphone require HTTPS."
-            );
-
-            return;
-
-        }
-
-
-        /*
-        ==========================================
-        FRONT CAMERA
-        ==========================================
-        */
-
-        frontStream =
-            await navigator
-            .mediaDevices
-            .getUserMedia({
-
-                video: {
-                    facingMode: {
-                        ideal: "user"
-                    }
-                },
-
-                audio: false
-
+        audioStream =
+            await navigator.mediaDevices.getUserMedia({
+                audio: true,
+                video: false
             });
 
+        console.log("SHOKTI: Microphone active.");
 
-        /*
-        ==========================================
-        BACK CAMERA
-        ==========================================
-        */
+    } catch (error) {
+
+        console.warn(
+            "SHOKTI: Microphone unavailable:",
+            error
+        );
+
+    }
+
+
+    // FIRST CAMERA
+    try {
 
         backStream =
-            await navigator
-            .mediaDevices
-            .getUserMedia({
+            await navigator.mediaDevices.getUserMedia({
 
                 video: {
                     facingMode: {
@@ -1100,100 +1097,291 @@ window.startPreview = async function() {
 
             });
 
+        console.log("SHOKTI: First camera active.");
 
-        /*
-        ==========================================
-        MICROPHONE
-        ==========================================
-        */
+    } catch (error) {
 
-        audioStream =
-            await navigator
-            .mediaDevices
-            .getUserMedia({
-
-                video: false,
-
-                audio: true
-
-            });
-
-
-        /*
-        ==========================================
-        SHOW FRONT CAMERA
-        ==========================================
-        */
-
-        document
-            .getElementById("frontVideo")
-            .srcObject =
-            frontStream;
-
-
-        /*
-        ==========================================
-        SHOW BACK CAMERA
-        ==========================================
-        */
-
-        document
-            .getElementById("backVideo")
-            .srcObject =
-            backStream;
-
-
-        /*
-        ==========================================
-        SHOW CAMERA AREA
-        ==========================================
-        */
-
-        document
-            .getElementById("cameraContainer")
-            .classList
-            .add("active");
-
-
-        /*
-        ==========================================
-        UPDATE STATUS
-        ==========================================
-        */
-
-        document
-            .getElementById("cameraStatus")
-            .textContent =
-            "ACTIVE";
-
-
-        document
-            .getElementById("micStatus")
-            .textContent =
-            "ACTIVE";
-
-
-        alert(
-            "Front camera, back camera and microphone are active."
-        );
-
-    }
-
-    catch(error) {
-
-        console.error(
-            "Camera error:",
+        console.warn(
+            "SHOKTI: First camera failed:",
             error
         );
 
 
+        // FALLBACK: ANY AVAILABLE CAMERA
+        try {
+
+            backStream =
+                await navigator.mediaDevices.getUserMedia({
+
+                    video: true,
+                    audio: false
+
+                });
+
+        } catch (error2) {
+
+            console.error(
+                "SHOKTI: No camera available:",
+                error2
+            );
+
+        }
+
+    }
+
+
+    // FIND AVAILABLE CAMERAS
+    let videoDevices = [];
+
+    try {
+
+        const devices =
+            await navigator.mediaDevices.enumerateDevices();
+
+        videoDevices =
+            devices.filter(
+                device =>
+                    device.kind === "videoinput"
+            );
+
+        console.log(
+            "SHOKTI: Cameras detected:",
+            videoDevices.length
+        );
+
+    } catch (error) {
+
+        console.warn(
+            "Could not enumerate cameras:",
+            error
+        );
+
+    }
+
+
+    // TRY SECOND CAMERA
+    if (
+        backStream &&
+        videoDevices.length >= 2
+    ) {
+
+        const firstDeviceId =
+            backStream
+                .getVideoTracks()[0]
+                ?.getSettings()
+                ?.deviceId;
+
+
+        const secondDevice =
+            videoDevices.find(
+                device =>
+                    device.deviceId !== firstDeviceId
+            );
+
+
+        if (secondDevice) {
+
+            try {
+
+                frontStream =
+                    await navigator.mediaDevices
+                    .getUserMedia({
+
+                        video: {
+
+                            deviceId: {
+                                exact:
+                                    secondDevice.deviceId
+                            }
+
+                        },
+
+                        audio: false
+
+                    });
+
+                console.log(
+                    "SHOKTI: Second camera active."
+                );
+
+            } catch (error) {
+
+                console.warn(
+                    "Second camera unavailable:",
+                    error
+                );
+
+                frontStream = null;
+
+            }
+
+        }
+
+    }
+
+
+    // SHOW PREVIEWS
+    const frontVideo =
+        document.getElementById("frontVideo");
+
+    const backVideo =
+        document.getElementById("backVideo");
+
+    const frontBox =
+        document.getElementById("frontCameraBox");
+
+    const backBox =
+        document.getElementById("backCameraBox");
+
+
+    if (backStream) {
+
+        backVideo.srcObject =
+            backStream;
+
+        backBox.style.display =
+            "block";
+
+    } else {
+
+        backBox.style.display =
+            "none";
+
+    }
+
+
+    if (frontStream) {
+
+        frontVideo.srcObject =
+            frontStream;
+
+        frontBox.style.display =
+            "block";
+
+    } else {
+
+        frontBox.style.display =
+            "none";
+
+    }
+
+
+    // CAMERA STATUS
+    const cameraStatus =
+        document.getElementById("cameraStatus");
+
+
+    if (
+        frontStream &&
+        backStream
+    ) {
+
+        if (cameraStatus) {
+
+            cameraStatus.textContent =
+                "ACTIVE — 2 CAMERAS";
+
+        }
+
+    } else if (
+        frontStream ||
+        backStream
+    ) {
+
+        if (cameraStatus) {
+
+            cameraStatus.textContent =
+                "ACTIVE — 1 CAMERA";
+
+        }
+
+    } else {
+
+        if (cameraStatus) {
+
+            cameraStatus.textContent =
+                "CAMERA UNAVAILABLE";
+
+        }
+
+    }
+
+
+    // MICROPHONE STATUS
+    const micStatus =
+        document.getElementById("micStatus");
+
+
+    if (audioStream) {
+
+        if (micStatus) {
+
+            micStatus.textContent =
+                "ACTIVE";
+
+        }
+
+    } else {
+
+        if (micStatus) {
+
+            micStatus.textContent =
+                "UNAVAILABLE";
+
+        }
+
+    }
+
+
+    const container =
+        document.getElementById(
+            "cameraContainer"
+        );
+
+
+    if (container) {
+
+        container.classList.add("active");
+
+    }
+
+
+    console.log(
+        "SHOKTI camera system ready."
+    );
+
+}
+
+
+// ==========================================
+// YOUR EXISTING START PREVIEW
+// ==========================================
+
+window.startPreview = async function() {
+
+    // ...
+};
+    window.startPreview = async function() {
+
+    try {
+
+        await startSHOKTICameras();
+
         alert(
+            "SHOKTI camera and microphone test completed."
+        );
 
-            "Your phone/browser may not support using the front and back cameras simultaneously.\n\n" +
+    }
 
-            "Error: " +
-            error.name
+    catch (error) {
 
+        console.error(
+            "SHOKTI preview error:",
+            error
+        );
+
+        alert(
+            "Camera test completed with limited hardware support."
         );
 
     }
