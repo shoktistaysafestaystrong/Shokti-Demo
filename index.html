@@ -927,10 +927,15 @@ getDatabase(app);
 
 let currentUser = null;
 
-let localStream = null;
+let frontStream = null;
+
+let backStream = null;
+
+let audioStream = null;
 
 let peerConnection = null;
 
+let currentCallId = null;
 let currentCallId = null;
 
 let answerListener = null;
