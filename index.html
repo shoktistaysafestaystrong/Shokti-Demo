@@ -372,6 +372,10 @@ h2 {
     display: block;
 }
 
+.camera-box {
+    display: none;
+}
+
 video {
 
     width: 100%;
@@ -414,6 +418,8 @@ video {
     justify-content: center;
 
     padding: 20px;
+
+    z-index: 1000;
 }
 
 .modal.show {
@@ -448,6 +454,17 @@ video {
     line-height: 1.5;
 
     margin-top: 10px;
+}
+
+/* MOBILE */
+
+@media(max-width:400px) {
+
+    .panic-button {
+        width: 180px;
+        height: 180px;
+    }
+
 }
 
 </style>
@@ -742,6 +759,8 @@ ONLINE
 </div>
 
 
+<!-- CAMERA PREVIEW -->
+
 <div
 id="cameraContainer"
 class="camera-container">
@@ -752,7 +771,9 @@ grid-template-columns:1fr 1fr;
 gap:10px;
 ">
 
-<div>
+<div
+id="frontCameraBox"
+class="camera-box">
 
 <p style="
 font-size:12px;
@@ -766,18 +787,15 @@ margin-bottom:5px;
 id="frontVideo"
 autoplay
 playsinline
-muted
-style="
-width:100%;
-border-radius:15px;
-background:#000;
-">
+muted>
 </video>
 
 </div>
 
 
-<div>
+<div
+id="backCameraBox"
+class="camera-box">
 
 <p style="
 font-size:12px;
@@ -791,12 +809,7 @@ margin-bottom:5px;
 id="backVideo"
 autoplay
 playsinline
-muted
-style="
-width:100%;
-border-radius:15px;
-background:#000;
-">
+muted>
 </video>
 
 </div>
@@ -804,9 +817,11 @@ background:#000;
 </div>
 
 
-<div class="camera-status">
+<div
+id="cameraPreviewStatus"
+class="camera-status">
 
-● FRONT + BACK CAMERA STREAMING
+● CAMERA READY
 
 </div>
 
@@ -829,7 +844,6 @@ onclick="getLocation()">
 📍 Test My Location
 
 </button>
-
 
 </section>
 
@@ -894,19 +908,35 @@ from
 
 
 /* ==========================================
-   🔥 PASTE YOUR FIREBASE CONFIG HERE
+   FIREBASE CONFIG
 ========================================== */
 
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyCx0hgLUR610_XUM16rbCekxsaqklOcwLI",
-  authDomain: "shokti-45501.firebaseapp.com",
-  databaseURL: "https://shokti-45501-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "shokti-45501",
-  storageBucket: "shokti-45501.firebasestorage.app",
-  messagingSenderId: "1020920544206",
-  appId: "1:1020920544206:web:3bda1aa2b53fc2068e099f",
-  measurementId: "G-8CTP48LXNW"
+
+    apiKey:
+    "AIzaSyCx0hgLUR610_XUM16rbCekxsaqklOcwLI",
+
+    authDomain:
+    "shokti-45501.firebaseapp.com",
+
+    databaseURL:
+    "https://shokti-45501-default-rtdb.asia-southeast1.firebasedatabase.app",
+
+    projectId:
+    "shokti-45501",
+
+    storageBucket:
+    "shokti-45501.firebasestorage.app",
+
+    messagingSenderId:
+    "1020920544206",
+
+    appId:
+    "1:1020920544206:web:3bda1aa2b53fc2068e099f",
+
+    measurementId:
+    "G-8CTP48LXNW"
+
 };
 
 
@@ -958,7 +988,8 @@ function(id) {
 
     document
         .getElementById(id)
-        .classList.add("active");
+        .classList
+        .add("active");
 
 };
 
@@ -1039,39 +1070,56 @@ function() {
 
 
 /* ==========================================
-   CAMERA + MICROPHONE PREVIEW
+   ADAPTIVE CAMERA + MICROPHONE SYSTEM
 ========================================== */
-
-// other JavaScript code
-// Firebase functions
-// other functions
-
-
-// ==========================================
-// SHOKTI ADAPTIVE CAMERA SYSTEM
-// ==========================================
 
 async function startSHOKTICameras() {
 
-    console.log("SHOKTI: Starting camera system...");
+    console.log(
+        "SHOKTI: Starting adaptive camera system..."
+    );
+
+
+    /*
+    ==========================================
+    RESET
+    ==========================================
+    */
 
     frontStream = null;
+
     backStream = null;
+
     audioStream = null;
 
 
-    // MICROPHONE
+    /*
+    ==========================================
+    MICROPHONE
+    ==========================================
+    */
+
     try {
 
         audioStream =
-            await navigator.mediaDevices.getUserMedia({
+            await navigator
+            .mediaDevices
+            .getUserMedia({
+
                 audio: true,
+
                 video: false
+
             });
 
-        console.log("SHOKTI: Microphone active.");
 
-    } catch (error) {
+        console.log(
+            "SHOKTI: Microphone active."
+        );
+
+    }
+
+    catch(error) {
 
         console.warn(
             "SHOKTI: Microphone unavailable:",
@@ -1081,44 +1129,71 @@ async function startSHOKTICameras() {
     }
 
 
-    // FIRST CAMERA
+    /*
+    ==========================================
+    FIRST CAMERA
+    ==========================================
+    */
+
     try {
 
         backStream =
-            await navigator.mediaDevices.getUserMedia({
+            await navigator
+            .mediaDevices
+            .getUserMedia({
 
                 video: {
+
                     facingMode: {
                         ideal: "environment"
                     }
+
                 },
 
                 audio: false
 
             });
 
-        console.log("SHOKTI: First camera active.");
 
-    } catch (error) {
+        console.log(
+            "SHOKTI: Camera 1 active."
+        );
+
+    }
+
+    catch(error) {
 
         console.warn(
-            "SHOKTI: First camera failed:",
+            "SHOKTI: Preferred camera failed:",
             error
         );
 
 
-        // FALLBACK: ANY AVAILABLE CAMERA
+        /*
+        FALLBACK TO ANY CAMERA
+        */
+
         try {
 
             backStream =
-                await navigator.mediaDevices.getUserMedia({
+                await navigator
+                .mediaDevices
+                .getUserMedia({
 
                     video: true,
+
                     audio: false
 
                 });
 
-        } catch (error2) {
+
+            console.log(
+                "SHOKTI: Fallback camera active."
+            );
+
+        }
+
+        catch(error2) {
 
             console.error(
                 "SHOKTI: No camera available:",
@@ -1130,26 +1205,39 @@ async function startSHOKTICameras() {
     }
 
 
-    // FIND AVAILABLE CAMERAS
+    /*
+    ==========================================
+    FIND CAMERAS
+    ==========================================
+    */
+
     let videoDevices = [];
+
 
     try {
 
         const devices =
-            await navigator.mediaDevices.enumerateDevices();
+            await navigator
+            .mediaDevices
+            .enumerateDevices();
+
 
         videoDevices =
             devices.filter(
                 device =>
-                    device.kind === "videoinput"
+                device.kind ===
+                "videoinput"
             );
+
 
         console.log(
             "SHOKTI: Cameras detected:",
             videoDevices.length
         );
 
-    } catch (error) {
+    }
+
+    catch(error) {
 
         console.warn(
             "Could not enumerate cameras:",
@@ -1159,23 +1247,33 @@ async function startSHOKTICameras() {
     }
 
 
-    // TRY SECOND CAMERA
+    /*
+    ==========================================
+    SECOND CAMERA
+    ==========================================
+    */
+
     if (
         backStream &&
         videoDevices.length >= 2
     ) {
 
-        const firstDeviceId =
+        const firstTrack =
             backStream
-                .getVideoTracks()[0]
-                ?.getSettings()
-                ?.deviceId;
+            .getVideoTracks()[0];
+
+
+        const firstDeviceId =
+            firstTrack
+            ?.getSettings()
+            ?.deviceId;
 
 
         const secondDevice =
             videoDevices.find(
                 device =>
-                    device.deviceId !== firstDeviceId
+                device.deviceId !==
+                firstDeviceId
             );
 
 
@@ -1184,14 +1282,17 @@ async function startSHOKTICameras() {
             try {
 
                 frontStream =
-                    await navigator.mediaDevices
+                    await navigator
+                    .mediaDevices
                     .getUserMedia({
 
                         video: {
 
                             deviceId: {
+
                                 exact:
-                                    secondDevice.deviceId
+                                secondDevice.deviceId
+
                             }
 
                         },
@@ -1200,11 +1301,14 @@ async function startSHOKTICameras() {
 
                     });
 
+
                 console.log(
                     "SHOKTI: Second camera active."
                 );
 
-            } catch (error) {
+            }
+
+            catch(error) {
 
                 console.warn(
                     "Second camera unavailable:",
@@ -1220,34 +1324,38 @@ async function startSHOKTICameras() {
     }
 
 
-    // SHOW PREVIEWS
+    /*
+    ==========================================
+    SHOW CAMERA PREVIEWS
+    ==========================================
+    */
+
     const frontVideo =
-        document.getElementById("frontVideo");
+        document
+        .getElementById(
+            "frontVideo"
+        );
+
 
     const backVideo =
-        document.getElementById("backVideo");
+        document
+        .getElementById(
+            "backVideo"
+        );
+
 
     const frontBox =
-        document.getElementById("frontCameraBox");
+        document
+        .getElementById(
+            "frontCameraBox"
+        );
+
 
     const backBox =
-        document.getElementById("backCameraBox");
-
-
-    if (backStream) {
-
-        backVideo.srcObject =
-            backStream;
-
-        backBox.style.display =
-            "block";
-
-    } else {
-
-        backBox.style.display =
-            "none";
-
-    }
+        document
+        .getElementById(
+            "backCameraBox"
+        );
 
 
     if (frontStream) {
@@ -1258,7 +1366,12 @@ async function startSHOKTICameras() {
         frontBox.style.display =
             "block";
 
-    } else {
+    }
+
+    else {
+
+        frontVideo.srcObject =
+            null;
 
         frontBox.style.display =
             "none";
@@ -1266,9 +1379,45 @@ async function startSHOKTICameras() {
     }
 
 
-    // CAMERA STATUS
+    if (backStream) {
+
+        backVideo.srcObject =
+            backStream;
+
+        backBox.style.display =
+            "block";
+
+    }
+
+    else {
+
+        backVideo.srcObject =
+            null;
+
+        backBox.style.display =
+            "none";
+
+    }
+
+
+    /*
+    ==========================================
+    CAMERA STATUS
+    ==========================================
+    */
+
     const cameraStatus =
-        document.getElementById("cameraStatus");
+        document
+        .getElementById(
+            "cameraStatus"
+        );
+
+
+    const previewStatus =
+        document
+        .getElementById(
+            "cameraPreviewStatus"
+        );
 
 
     if (
@@ -1276,96 +1425,118 @@ async function startSHOKTICameras() {
         backStream
     ) {
 
-        if (cameraStatus) {
+        cameraStatus.textContent =
+            "ACTIVE — 2 CAMERAS";
 
-            cameraStatus.textContent =
-                "ACTIVE — 2 CAMERAS";
 
-        }
+        previewStatus.textContent =
+            "● FRONT + BACK CAMERA ACTIVE";
 
-    } else if (
+    }
+
+    else if (
         frontStream ||
         backStream
     ) {
 
-        if (cameraStatus) {
+        cameraStatus.textContent =
+            "ACTIVE — 1 CAMERA";
 
-            cameraStatus.textContent =
-                "ACTIVE — 1 CAMERA";
 
-        }
+        previewStatus.textContent =
+            "● 1 CAMERA ACTIVE";
 
-    } else {
+    }
 
-        if (cameraStatus) {
+    else {
 
-            cameraStatus.textContent =
-                "CAMERA UNAVAILABLE";
+        cameraStatus.textContent =
+            "UNAVAILABLE";
 
-        }
+
+        previewStatus.textContent =
+            "● CAMERA UNAVAILABLE";
 
     }
 
 
-    // MICROPHONE STATUS
+    /*
+    ==========================================
+    MICROPHONE STATUS
+    ==========================================
+    */
+
     const micStatus =
-        document.getElementById("micStatus");
+        document
+        .getElementById(
+            "micStatus"
+        );
 
 
     if (audioStream) {
 
-        if (micStatus) {
+        micStatus.textContent =
+            "ACTIVE";
 
-            micStatus.textContent =
-                "ACTIVE";
+    }
 
-        }
+    else {
 
-    } else {
-
-        if (micStatus) {
-
-            micStatus.textContent =
-                "UNAVAILABLE";
-
-        }
+        micStatus.textContent =
+            "UNAVAILABLE";
 
     }
 
 
+    /*
+    ==========================================
+    SHOW CONTAINER
+    ==========================================
+    */
+
     const container =
-        document.getElementById(
+        document
+        .getElementById(
             "cameraContainer"
         );
 
 
-    if (container) {
+    if (
+        frontStream ||
+        backStream
+    ) {
 
-        container.classList.add("active");
+        container
+            .classList
+            .add("active");
 
     }
 
 
-    console.log(
-        "SHOKTI camera system ready."
-    );
+    return {
+
+        frontStream,
+
+        backStream,
+
+        audioStream
+
+    };
 
 }
 
 
-// ==========================================
-// YOUR EXISTING START PREVIEW
-// ==========================================
+/* ==========================================
+   CAMERA PREVIEW
+========================================== */
 
-window.startPreview = async function() {
-
-    // ...
-};
-    window.startPreview = async function() {
+window.startPreview =
+async function() {
 
     try {
 
         await startSHOKTICameras();
+
 
         alert(
             "SHOKTI camera and microphone test completed."
@@ -1373,12 +1544,13 @@ window.startPreview = async function() {
 
     }
 
-    catch (error) {
+    catch(error) {
 
         console.error(
             "SHOKTI preview error:",
             error
         );
+
 
         alert(
             "Camera test completed with limited hardware support."
@@ -1396,7 +1568,9 @@ window.startPreview = async function() {
 window.getLocation =
 function() {
 
-    if (!navigator.geolocation) {
+    if (
+        !navigator.geolocation
+    ) {
 
         alert(
             "Geolocation is not supported."
@@ -1408,7 +1582,9 @@ function() {
 
 
     document
-        .getElementById("locationStatus")
+        .getElementById(
+            "locationStatus"
+        )
         .textContent =
         "LOCATING...";
 
@@ -1431,29 +1607,37 @@ function() {
 
 
                 document
-                    .getElementById("locationStatus")
+                    .getElementById(
+                        "locationStatus"
+                    )
                     .textContent =
                     "ACTIVE";
 
-
             },
+
 
             error => {
 
                 console.error(error);
 
+
                 document
-                    .getElementById("locationStatus")
+                    .getElementById(
+                        "locationStatus"
+                    )
                     .textContent =
                     "DENIED";
 
             },
 
+
             {
 
-                enableHighAccuracy: true,
+                enableHighAccuracy:
+                true,
 
-                timeout: 10000
+                timeout:
+                10000
 
             }
 
@@ -1463,7 +1647,7 @@ function() {
 
 
 /* ==========================================
-   CREATE WEBRTC CONNECTION
+   WEBRTC
 ========================================== */
 
 function createPeerConnection() {
@@ -1474,8 +1658,10 @@ function createPeerConnection() {
             iceServers: [
 
                 {
+
                     urls:
                     "stun:stun.l.google.com:19302"
+
                 }
 
             ]
@@ -1493,10 +1679,12 @@ function createPeerConnection() {
 
             const candidateRef =
                 push(
+
                     ref(
                         database,
                         `calls/${currentCallId}/callerCandidates`
                     )
+
                 );
 
 
@@ -1528,172 +1716,30 @@ async function() {
     document
         .getElementById("modalText")
         .textContent =
-        "Opening camera and microphone...";
+        "Opening available camera(s) and microphone...";
 
 
     try {
 
-        /* GET CAMERA + MIC */
-
         /*
-==========================================
-START FRONT + BACK + MICROPHONE
-==========================================
-*/
-
-if (
-    !frontStream ||
-    !backStream ||
-    !audioStream
-) {
-
-    try {
-
-        /*
-        FRONT CAMERA
+        ==========================================
+        START AVAILABLE MEDIA
+        ==========================================
         */
 
-        frontStream =
-            await navigator
-            .mediaDevices
-            .getUserMedia({
-
-                video: {
-                    facingMode: {
-                        exact: "user"
-                    }
-                },
-
-                audio: false
-
-            });
+        await startSHOKTICameras();
 
 
         /*
-        BACK CAMERA
+        ==========================================
+        LOCATION
+        ==========================================
         */
-
-        backStream =
-            await navigator
-            .mediaDevices
-            .getUserMedia({
-
-                video: {
-                    facingMode: {
-                        exact: "environment"
-                    }
-                },
-
-                audio: false
-
-            });
-
-
-        /*
-        MICROPHONE
-        */
-
-        audioStream =
-            await navigator
-            .mediaDevices
-            .getUserMedia({
-
-                video: false,
-
-                audio: true
-
-            });
-
-    }
-
-    catch(error) {
-
-        console.error(error);
-
-        alert(
-
-            "Could not activate both cameras.\n\n" +
-
-            "Your phone/browser may not support " +
-            "simultaneous front and back camera access.\n\n" +
-
-            "Error: " +
-            error.name
-
-        );
-
-        return;
-
-    }
-
-}
-
-
-/*
-==========================================
-SHOW BOTH CAMERAS
-==========================================
-*/
-
-document
-    .getElementById("frontVideo")
-    .srcObject =
-    frontStream;
-
-
-document
-    .getElementById("backVideo")
-    .srcObject =
-    backStream;
-
-
-document
-    .getElementById("cameraContainer")
-    .classList
-    .add("active");
-
-
-document
-    .getElementById("cameraStatus")
-    .textContent =
-    "ACTIVE";
-
-
-document
-    .getElementById("micStatus")
-    .textContent =
-    "ACTIVE";
-
-
-        document
-            .getElementById("localVideo")
-            .srcObject =
-            localStream;
-
-
-        document
-            .getElementById("cameraContainer")
-            .classList
-            .add("active");
-
-
-        document
-            .getElementById("cameraStatus")
-            .textContent =
-            "ACTIVE";
-
-
-        document
-            .getElementById("micStatus")
-            .textContent =
-            "ACTIVE";
-
-
-        /* LOCATION */
 
         let location = {
 
             latitude: null,
+
             longitude: null
 
         };
@@ -1740,18 +1786,39 @@ document
                     }
                 );
 
+
+            document
+                .getElementById(
+                    "locationStatus"
+                )
+                .textContent =
+                "ACTIVE";
+
         }
 
-        catch {
+        catch(error) {
 
-            console.log(
-                "Location unavailable."
+            console.warn(
+                "Location unavailable.",
+                error
             );
 
+
+            document
+                .getElementById(
+                    "locationStatus"
+                )
+                .textContent =
+                "UNAVAILABLE";
+
         }
 
 
-        /* CREATE CALL */
+        /*
+        ==========================================
+        CREATE CALL
+        ==========================================
+        */
 
         currentCallId =
             "SHK-" +
@@ -1761,60 +1828,92 @@ document
         createPeerConnection();
 
 
-        /* ADD CAMERA + MIC */
+        /*
+        ==========================================
+        ADD AVAILABLE FRONT CAMERA
+        ==========================================
+        */
+
+        if (
+            frontStream
+        ) {
+
+            const frontTrack =
+                frontStream
+                .getVideoTracks()[0];
+
+
+            if (frontTrack) {
+
+                peerConnection.addTrack(
+                    frontTrack,
+                    frontStream
+                );
+
+            }
+
+        }
+
 
         /*
-==========================================
-ADD FRONT CAMERA
-==========================================
-*/
+        ==========================================
+        ADD AVAILABLE BACK CAMERA
+        ==========================================
+        */
 
-const frontVideoTrack =
-    frontStream
-    .getVideoTracks()[0];
+        if (
+            backStream
+        ) {
 
-
-peerConnection.addTrack(
-    frontVideoTrack,
-    frontStream
-);
+            const backTrack =
+                backStream
+                .getVideoTracks()[0];
 
 
-/*
-==========================================
-ADD BACK CAMERA
-==========================================
-*/
+            if (backTrack) {
 
-const backVideoTrack =
-    backStream
-    .getVideoTracks()[0];
+                peerConnection.addTrack(
+                    backTrack,
+                    backStream
+                );
 
+            }
 
-peerConnection.addTrack(
-    backVideoTrack,
-    backStream
-);
+        }
 
 
-/*
-==========================================
-ADD MICROPHONE
-==========================================
-*/
+        /*
+        ==========================================
+        ADD MICROPHONE
+        ==========================================
+        */
 
-const microphoneTrack =
-    audioStream
-    .getAudioTracks()[0];
+        if (
+            audioStream
+        ) {
 
-
-peerConnection.addTrack(
-    microphoneTrack,
-    audioStream
-);
+            const microphoneTrack =
+                audioStream
+                .getAudioTracks()[0];
 
 
-        /* CREATE OFFER */
+            if (microphoneTrack) {
+
+                peerConnection.addTrack(
+                    microphoneTrack,
+                    audioStream
+                );
+
+            }
+
+        }
+
+
+        /*
+        ==========================================
+        CREATE OFFER
+        ==========================================
+        */
 
         const offer =
             await peerConnection
@@ -1827,7 +1926,36 @@ peerConnection.addTrack(
             );
 
 
-        /* SAVE EMERGENCY + OFFER */
+        /*
+        ==========================================
+        CAMERA STREAM IDs
+        ==========================================
+        */
+
+        const cameraStreams = {
+
+            front:
+                frontStream
+                ?
+                frontStream.id
+                :
+                null,
+
+            back:
+                backStream
+                ?
+                backStream.id
+                :
+                null
+
+        };
+
+
+        /*
+        ==========================================
+        SAVE EMERGENCY
+        ==========================================
+        */
 
         await set(
 
@@ -1847,28 +1975,47 @@ peerConnection.addTrack(
                 victim: {
 
                     name:
-                    currentUser.name,
+                    currentUser?.name ||
+                    "Demo User",
 
                     phone:
-                    currentUser.phone,
+                    currentUser?.phone ||
+                    "-",
 
                     email:
-                    currentUser.email
+                    currentUser?.email ||
+                    "-"
 
                 },
-cameraStreams: {
 
-    front:
-        frontStream.id,
 
-    back:
-        backStream.id
+                cameraStreams:
+                cameraStreams,
 
-},
-                location: location,
+
+                media:
+
+                {
+
+                    frontCamera:
+                    !!frontStream,
+
+                    backCamera:
+                    !!backStream,
+
+                    microphone:
+                    !!audioStream
+
+                },
+
+
+                location:
+                location,
+
 
                 timestamp:
                 Date.now(),
+
 
                 offer: {
 
@@ -1885,14 +2032,15 @@ cameraStreams: {
         );
 
 
-        document
-            .getElementById("locationStatus")
-            .textContent =
-            location.latitude
-            ?
-            "ACTIVE"
-            :
-            "UNAVAILABLE";
+        /*
+        ==========================================
+        UPDATE MODAL
+        ==========================================
+        */
+
+        const cameraCount =
+            (frontStream ? 1 : 0) +
+            (backStream ? 1 : 0);
 
 
         document
@@ -1911,118 +2059,152 @@ cameraStreams: {
 
             <br><br>
 
+            Cameras available:
+            ${cameraCount}
+
+            <br><br>
+
+            Microphone:
+            ${audioStream ? "ACTIVE" : "UNAVAILABLE"}
+
+            <br><br>
+
             Waiting for the SHOKTI
             Police Control Room...
             `;
 
 
-        /* WAIT FOR ANSWER */
+        /*
+        ==========================================
+        WAIT FOR POLICE ANSWER
+        ==========================================
+        */
 
         answerListener =
-        onValue(
+            onValue(
 
-            ref(
-                database,
-                `calls/${currentCallId}/answer`
-            ),
+                ref(
+                    database,
+                    `calls/${currentCallId}/answer`
+                ),
 
-            async snapshot => {
+                async snapshot => {
 
-                const answer =
-                    snapshot.val();
-
-
-                if (
-                    answer &&
-                    peerConnection &&
-                    !peerConnection.currentRemoteDescription
-                ) {
-
-                    await peerConnection
-                        .setRemoteDescription(
-                            new RTCSessionDescription(
-                                answer
-                            )
-                        );
+                    const answer =
+                        snapshot.val();
 
 
-                    document
-                        .getElementById("modalText")
-                        .innerHTML =
-
-                        `
-                        <strong>
-                        🚨 POLICE CONNECTED
-                        </strong>
-
-                        <br><br>
-
-                        Your live camera and
-                        microphone are now connected
-                        to the demo Police Control Room.
-                        `;
-
-                }
-
-            }
-
-        );
-
-
-        /* WAIT FOR POLICE ICE CANDIDATES */
-
-        candidateListener =
-        onChildAdded(
-
-            ref(
-                database,
-                `calls/${currentCallId}/calleeCandidates`
-            ),
-
-            async snapshot => {
-
-                const candidate =
-                    snapshot.val();
-
-
-                if (
-                    candidate &&
-                    peerConnection
-                ) {
-
-                    try {
+                    if (
+                        answer &&
+                        peerConnection &&
+                        !peerConnection.currentRemoteDescription
+                    ) {
 
                         await peerConnection
-                            .addIceCandidate(
-                                new RTCIceCandidate(
-                                    candidate
+                            .setRemoteDescription(
+
+                                new RTCSessionDescription(
+                                    answer
                                 )
+
                             );
 
-                    }
 
-                    catch(error) {
+                        document
+                            .getElementById(
+                                "modalText"
+                            )
+                            .innerHTML =
 
-                        console.error(error);
+                            `
+                            <strong>
+                            🚨 POLICE CONNECTED
+                            </strong>
+
+                            <br><br>
+
+                            Your available live
+                            camera(s) and microphone
+                            are connected to the demo
+                            Police Control Room.
+                            `;
 
                     }
 
                 }
 
-            }
+            );
 
-        );
+
+        /*
+        ==========================================
+        WAIT FOR POLICE ICE
+        ==========================================
+        */
+
+        candidateListener =
+            onChildAdded(
+
+                ref(
+                    database,
+                    `calls/${currentCallId}/calleeCandidates`
+                ),
+
+                async snapshot => {
+
+                    const candidate =
+                        snapshot.val();
+
+
+                    if (
+                        candidate &&
+                        peerConnection
+                    ) {
+
+                        try {
+
+                            await peerConnection
+                                .addIceCandidate(
+
+                                    new RTCIceCandidate(
+                                        candidate
+                                    )
+
+                                );
+
+                        }
+
+                        catch(error) {
+
+                            console.error(
+                                "ICE error:",
+                                error
+                            );
+
+                        }
+
+                    }
+
+                }
+
+            );
 
     }
 
     catch(error) {
 
-        console.error(error);
+        console.error(
+            "Emergency error:",
+            error
+        );
+
 
         document
-            .getElementById("modalText")
+            .getElementById(
+                "modalText"
+            )
             .textContent =
-            "Could not start the emergency demo. Please check camera/microphone permissions.";
+            "Could not start the emergency demo. Please check your browser permissions.";
 
     }
 
