@@ -11,6 +11,7 @@ content="width=device-width, initial-scale=1.0">
 
 <title>SHOKTI — Police Control Room</title>
 
+
 <style>
 
 * {
@@ -27,16 +28,16 @@ content="width=device-width, initial-scale=1.0">
 
 body {
 
-    background:
-        #eef1f4;
+    background: #eef1f4;
 
-    color:
-        #263238;
+    color: #263238;
 
 }
 
 
-/* HEADER */
+/* =========================
+   HEADER
+========================= */
 
 .header {
 
@@ -49,8 +50,7 @@ body {
 
     color: white;
 
-    padding:
-        22px 35px;
+    padding: 22px 35px;
 
     display: flex;
 
@@ -63,159 +63,135 @@ body {
 
 .logo h1 {
 
-    letter-spacing:
-        2px;
+    letter-spacing: 2px;
 
 }
 
 .logo p {
 
-    font-size:
-        12px;
+    font-size: 12px;
 
-    opacity:
-        .7;
+    opacity: .7;
 
-    margin-top:
-        5px;
+    margin-top: 5px;
 
 }
 
 .status {
 
-    background:
-        #1b5e20;
+    background: #1b5e20;
 
-    padding:
-        8px 14px;
+    padding: 8px 14px;
 
-    border-radius:
-        20px;
+    border-radius: 20px;
 
-    font-size:
-        12px;
+    font-size: 12px;
 
 }
 
 
-/* MAIN */
+/* =========================
+   MAIN
+========================= */
 
 .container {
 
-    max-width:
-        1200px;
+    max-width: 1200px;
 
-    margin:
-        30px auto;
+    margin: 30px auto;
 
-    padding:
-        0 20px;
+    padding: 0 20px;
 
 }
 
 .title {
 
-    margin-bottom:
-        20px;
+    margin-bottom: 20px;
 
 }
 
 .title h2 {
 
-    font-size:
-        27px;
+    font-size: 27px;
 
 }
 
 .title p {
 
-    color:
-        #777;
+    color: #777;
 
-    margin-top:
-        5px;
+    margin-top: 5px;
 
 }
 
 
-/* WAITING */
+/* =========================
+   WAITING
+========================= */
 
 .waiting {
 
-    background:
-        white;
+    background: white;
 
-    border-radius:
-        20px;
+    border-radius: 20px;
 
-    padding:
-        70px 20px;
+    padding: 70px 20px;
 
-    text-align:
-        center;
+    text-align: center;
 
 }
 
 .waiting-icon {
 
-    font-size:
-        65px;
+    font-size: 65px;
 
 }
 
 .waiting h2 {
 
-    margin-top:
-        15px;
+    margin-top: 15px;
 
 }
 
 .waiting p {
 
-    color:
-        #777;
+    color: #777;
 
-    margin-top:
-        8px;
+    margin-top: 8px;
 
 }
 
 
-/* EMERGENCY */
+/* =========================
+   EMERGENCY
+========================= */
 
 .emergency {
 
-    display:
-        none;
+    display: none;
 
 }
 
 .emergency.active {
 
-    display:
-        block;
+    display: block;
 
 }
 
 .banner {
 
-    background:
-        #b71c1c;
+    background: #b71c1c;
 
-    color:
-        white;
+    color: white;
 
-    padding:
-        20px;
+    padding: 20px;
 
-    border-radius:
-        18px;
+    border-radius: 18px;
 
-    margin-bottom:
-        20px;
+    margin-bottom: 20px;
 
     animation:
-        pulse 1s infinite;
+        pulse 1.5s infinite;
 
 }
 
@@ -224,55 +200,52 @@ body {
     0% {
 
         box-shadow:
-        0 0 0
-        rgba(183,28,28,.3);
+            0 0 0
+            rgba(183,28,28,.3);
 
     }
 
     50% {
 
         box-shadow:
-        0 0 30px
-        rgba(183,28,28,.5);
+            0 0 30px
+            rgba(183,28,28,.5);
 
     }
 
     100% {
 
         box-shadow:
-        0 0 0
-        rgba(183,28,28,.3);
+            0 0 0
+            rgba(183,28,28,.3);
 
     }
 
 }
 
 
-/* GRID */
+/* =========================
+   GRID
+========================= */
 
 .grid {
 
-    display:
-        grid;
+    display: grid;
 
     grid-template-columns:
         1fr 1fr;
 
-    gap:
-        20px;
+    gap: 20px;
 
 }
 
 .card {
 
-    background:
-        white;
+    background: white;
 
-    border-radius:
-        20px;
+    border-radius: 20px;
 
-    padding:
-        22px;
+    padding: 22px;
 
     box-shadow:
         0 4px 20px
@@ -282,59 +255,14 @@ body {
 
 .card h3 {
 
-    margin-bottom:
-        15px;
-
-}
-
-.info {
-
-    display:
-        flex;
-
-    justify-content:
-        space-between;
-
-    padding:
-        13px 0;
-
-    border-bottom:
-        1px solid #eee;
-
-    font-size:
-        14px;
-
-}
-
-.info:last-child {
-
-    border-bottom:
-        none;
-
-}
-
-.green {
-
-    color:
-        #159447;
-
-    font-weight:
-        bold;
-
-}
-
-.red {
-
-    color:
-        #d32f2f;
-
-    font-weight:
-        bold;
+    margin-bottom: 15px;
 
 }
 
 
-/* VIDEO */
+/* =========================
+   VIDEO
+========================= */
 
 .video-card {
 
@@ -343,182 +271,221 @@ body {
 
 }
 
-.camera-grid {
+.video-grid {
 
-    display:
-        grid;
+    display: grid;
 
     grid-template-columns:
         1fr 1fr;
 
-    gap:
-        15px;
+    gap: 15px;
 
 }
 
-.remote-camera-box {
+.camera-title {
 
-    display:
-        none;
+    font-weight: bold;
 
-}
-
-.remote-camera-box.active {
-
-    display:
-        block;
+    margin-bottom: 8px;
 
 }
 
 .remote-video {
 
-    width:
-        100%;
+    width: 100%;
 
-    min-height:
-        250px;
+    min-height: 250px;
 
-    max-height:
-        600px;
+    max-height: 500px;
 
-    object-fit:
-        contain;
+    object-fit: contain;
 
-    background:
-        #111;
+    background: #111;
 
-    border-radius:
-        18px;
+    border-radius: 18px;
 
-    display:
-        block;
+    display: block;
 
 }
 
 .video-status {
 
-    text-align:
-        center;
+    text-align: center;
 
-    margin-top:
-        10px;
+    margin-top: 10px;
 
-    color:
-        #159447;
+    color: #159447;
 
-    font-weight:
-        bold;
+    font-weight: bold;
 
 }
 
 
-/* LOCATION */
+/* =========================
+   AUDIO
+========================= */
+
+.audio-box {
+
+    margin-top: 18px;
+
+    background: #f4f6f7;
+
+    padding: 15px;
+
+    border-radius: 15px;
+
+    text-align: center;
+
+}
+
+.audio-button {
+
+    border: none;
+
+    background: #37474f;
+
+    color: white;
+
+    padding: 12px 20px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    margin-top: 8px;
+
+}
+
+
+/* =========================
+   INFO
+========================= */
+
+.info {
+
+    display: flex;
+
+    justify-content:
+        space-between;
+
+    padding: 13px 0;
+
+    border-bottom:
+        1px solid #eee;
+
+    font-size: 14px;
+
+}
+
+.info:last-child {
+
+    border-bottom: none;
+
+}
+
+.green {
+
+    color: #159447;
+
+    font-weight: bold;
+
+}
+
+.red {
+
+    color: #d32f2f;
+
+    font-weight: bold;
+
+}
+
+
+/* =========================
+   LOCATION
+========================= */
 
 .location {
 
-    background:
-        #f4f6f7;
+    background: #f4f6f7;
 
-    padding:
-        18px;
+    padding: 18px;
 
-    border-radius:
-        15px;
+    border-radius: 15px;
 
-    line-height:
-        1.8;
+    line-height: 1.8;
 
 }
 
 .map {
 
-    display:
-        block;
+    display: block;
 
-    text-decoration:
-        none;
+    text-decoration: none;
 
-    text-align:
-        center;
+    text-align: center;
 
-    background:
-        #1976d2;
+    background: #1976d2;
 
-    color:
-        white;
+    color: white;
 
-    padding:
-        14px;
+    padding: 14px;
 
-    margin-top:
-        15px;
+    margin-top: 15px;
 
-    border-radius:
-        12px;
+    border-radius: 12px;
 
 }
 
 
-/* BUTTONS */
+/* =========================
+   BUTTONS
+========================= */
 
 .dispatch {
 
-    width:
-        100%;
+    width: 100%;
 
-    border:
-        none;
+    border: none;
 
-    padding:
-        17px;
+    padding: 17px;
 
-    border-radius:
-        14px;
+    border-radius: 14px;
 
-    background:
-        #c62828;
+    background: #c62828;
 
-    color:
-        white;
+    color: white;
 
-    font-size:
-        16px;
+    font-size: 16px;
 
-    font-weight:
-        bold;
+    font-weight: bold;
 
-    cursor:
-        pointer;
+    cursor: pointer;
 
 }
 
 .resolve {
 
-    width:
-        100%;
+    width: 100%;
 
-    margin-top:
-        10px;
+    margin-top: 10px;
 
-    padding:
-        14px;
+    padding: 14px;
 
-    border:
-        1px solid #ddd;
+    border: 1px solid #ddd;
 
-    background:
-        white;
+    background: white;
 
-    border-radius:
-        14px;
+    border-radius: 14px;
 
-    cursor:
-        pointer;
+    cursor: pointer;
 
 }
 
 
-/* MOBILE */
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:800px) {
 
@@ -536,7 +503,7 @@ body {
 
     }
 
-    .camera-grid {
+    .video-grid {
 
         grid-template-columns:
             1fr;
@@ -545,8 +512,7 @@ body {
 
     .header {
 
-        padding:
-            20px;
+        padding: 20px;
 
     }
 
@@ -555,6 +521,7 @@ body {
 </style>
 
 </head>
+
 
 <body>
 
@@ -596,7 +563,9 @@ SHOKTI real-time emergency response prototype
 </div>
 
 
-<!-- WAITING -->
+<!-- =========================
+     WAITING
+========================= -->
 
 <div
 id="waiting"
@@ -611,13 +580,16 @@ No Active Emergency
 </h2>
 
 <p>
-The SHOKTI network is monitoring for emergency signals.
+The SHOKTI network is monitoring
+for emergency signals.
 </p>
 
 </div>
 
 
-<!-- EMERGENCY -->
+<!-- =========================
+     EMERGENCY
+========================= -->
 
 <div
 id="emergency"
@@ -640,31 +612,25 @@ Immediate assistance may be required.
 <div class="grid">
 
 
-<!-- LIVE VIDEO -->
+<!-- =========================
+     LIVE VIDEO
+========================= -->
 
 <div class="card video-card">
 
 <h3>
-🎥 Live Victim Camera
+🎥 Live Victim Cameras
 </h3>
 
 
-<div class="camera-grid">
+<div class="video-grid">
 
 
-<!-- FRONT -->
+<div>
 
-<div
-id="frontCameraBox"
-class="remote-camera-box">
-
-<h4 style="
-margin-bottom:8px;
-">
-
+<div class="camera-title">
 🤳 FRONT CAMERA
-
-</h4>
+</div>
 
 <video
 id="frontRemoteVideo"
@@ -676,19 +642,11 @@ playsinline>
 </div>
 
 
-<!-- BACK -->
+<div>
 
-<div
-id="backCameraBox"
-class="remote-camera-box">
-
-<h4 style="
-margin-bottom:8px;
-">
-
+<div class="camera-title">
 📷 BACK CAMERA
-
-</h4>
+</div>
 
 <video
 id="backRemoteVideo"
@@ -712,15 +670,44 @@ class="video-status">
 </div>
 
 
+<div class="audio-box">
+
+🎙️ Victim Microphone
+
+<br>
+
+<strong
+id="micState">
+
+● WAITING
+
+</strong>
+
+<br>
+
+<button
+class="audio-button"
+onclick="enableAudio()">
+
+🔊 Enable Audio
+
+</button>
+
+</div>
+
+
 <audio
 id="remoteAudio"
 autoplay>
 </audio>
 
+
 </div>
 
 
-<!-- VICTIM -->
+<!-- =========================
+     VICTIM
+========================= -->
 
 <div class="card">
 
@@ -784,7 +771,9 @@ Incident
 </div>
 
 
-<!-- SYSTEM -->
+<!-- =========================
+     SYSTEM
+========================= -->
 
 <div class="card">
 
@@ -803,7 +792,7 @@ GPS
 id="gpsState"
 class="green">
 
-● RECEIVED
+● ACTIVE
 
 </strong>
 
@@ -820,7 +809,7 @@ Camera
 id="cameraState"
 class="green">
 
-● WAITING
+● CONNECTING
 
 </strong>
 
@@ -834,10 +823,10 @@ Microphone
 </span>
 
 <strong
-id="micState"
+id="micState2"
 class="green">
 
-● WAITING
+● CONNECTING
 
 </strong>
 
@@ -864,7 +853,9 @@ class="green">
 </div>
 
 
-<!-- LOCATION -->
+<!-- =========================
+     LOCATION
+========================= -->
 
 <div class="card">
 
@@ -922,7 +913,9 @@ target="_blank">
 </div>
 
 
-<!-- RESPONSE -->
+<!-- =========================
+     RESPONSE
+========================= -->
 
 <div class="card">
 
@@ -968,6 +961,11 @@ onclick="resolveEmergency()">
 
 <script type="module">
 
+
+/* =========================================
+   FIREBASE
+========================================= */
+
 import {
     initializeApp
 }
@@ -979,16 +977,15 @@ import {
     getDatabase,
     ref,
     onChildAdded,
-    push,
     set
 }
 from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-database.js";
 
 
-/* ==========================================
+/* =========================================
    FIREBASE CONFIG
-========================================== */
+========================================= */
 
 const firebaseConfig = {
 
@@ -1019,10 +1016,6 @@ const firebaseConfig = {
 };
 
 
-/* ==========================================
-   FIREBASE
-========================================== */
-
 const app =
 initializeApp(firebaseConfig);
 
@@ -1030,23 +1023,20 @@ const database =
 getDatabase(app);
 
 
-/* ==========================================
+/* =========================================
    VARIABLES
-========================================== */
+========================================= */
 
 let peerConnection = null;
 
 let currentCallId = null;
 
-let candidateListener = null;
-
-let remoteAudioStream =
-    new MediaStream();
+let currentCallData = null;
 
 
-/* ==========================================
-   FIREBASE CALL LISTENER
-========================================== */
+/* =========================================
+   FIND NEW EMERGENCY
+========================================= */
 
 const callsRef =
 ref(
@@ -1079,7 +1069,7 @@ onChildAdded(
 
 
         /*
-        Don't reconnect to the same call
+           Ignore duplicate connection
         */
 
         if (
@@ -1094,10 +1084,11 @@ onChildAdded(
         currentCallId =
             callId;
 
+        currentCallData =
+            data;
 
-        showEmergency(
-            data
-        );
+
+        showEmergency(data);
 
 
         connectToVictim(
@@ -1110,13 +1101,11 @@ onChildAdded(
 );
 
 
-/* ==========================================
+/* =========================================
    SHOW EMERGENCY
-========================================== */
+========================================= */
 
-function showEmergency(
-    data
-) {
+function showEmergency(data) {
 
     document
         .getElementById("waiting")
@@ -1133,32 +1122,30 @@ function showEmergency(
     document
         .getElementById("victimName")
         .textContent =
-        data.victim?.name || "-";
+        data.victim?.name ||
+        "-";
 
 
     document
         .getElementById("victimPhone")
         .textContent =
-        data.victim?.phone || "-";
+        data.victim?.phone ||
+        "-";
 
 
     document
         .getElementById("victimEmail")
         .textContent =
-        data.victim?.email || "-";
+        data.victim?.email ||
+        "-";
 
 
     document
         .getElementById("incident")
         .textContent =
-        data.incidentId || "-";
+        data.incidentId ||
+        "-";
 
-
-    /*
-    ==========================================
-    LOCATION
-    ==========================================
-    */
 
     const location =
         data.location;
@@ -1183,12 +1170,6 @@ function showEmergency(
 
 
         document
-            .getElementById("gpsState")
-            .textContent =
-            "● ACTIVE";
-
-
-        document
             .getElementById("mapLink")
             .href =
 
@@ -1206,15 +1187,7 @@ function showEmergency(
     }
 
 
-    /*
-    ==========================================
-    TIME
-    ==========================================
-    */
-
-    if (
-        data.timestamp
-    ) {
+    if (data.timestamp) {
 
         document
             .getElementById("time")
@@ -1226,424 +1199,374 @@ function showEmergency(
 
     }
 
-
-    /*
-    ==========================================
-    MEDIA EXPECTATION
-    ==========================================
-    */
-
-    const frontAvailable =
-        data.media?.frontCamera ||
-        !!data.cameraStreams?.front;
-
-
-    const backAvailable =
-        data.media?.backCamera ||
-        !!data.cameraStreams?.back;
-
-
-    const microphoneAvailable =
-        data.media?.microphone;
-
-
-    if (
-        frontAvailable
-    ) {
-
-        document
-            .getElementById("frontCameraBox")
-            .classList
-            .add("active");
-
-    }
-
-
-    if (
-        backAvailable
-    ) {
-
-        document
-            .getElementById("backCameraBox")
-            .classList
-            .add("active");
-
-    }
-
-
-    if (
-        microphoneAvailable
-    ) {
-
-        document
-            .getElementById("micState")
-            .textContent =
-            "● CONNECTING";
-
-    }
-
 }
 
 
-/* ==========================================
-   CONNECT TO VICTIM
-========================================== */
+/* =========================================
+   WAIT FOR ICE
+========================================= */
 
-async function connectToVictim(
-    callId,
-    data
+function waitForIceGatheringComplete(
+    pc
 ) {
 
-    /*
-    ==========================================
-    CLOSE PREVIOUS CONNECTION
-    ==========================================
-    */
-
-    if (
-        peerConnection
-    ) {
-
-        try {
-
-            peerConnection.close();
-
-        }
-
-        catch(error) {
-
-            console.warn(error);
-
-        }
-
-    }
-
-
-    peerConnection =
-        new RTCPeerConnection({
-
-            iceServers: [
-
-                {
-
-                    urls:
-                    "stun:stun.l.google.com:19302"
-
-                }
-
-            ]
-
-        });
-
-
-    /*
-    ==========================================
-    RECEIVE TRACKS
-    ==========================================
-    */
-
-    peerConnection.ontrack =
-    event => {
-
-        console.log(
-            "SHOKTI: Received track:",
-            event.track.kind
-        );
-
-
-        /*
-        ======================================
-        AUDIO
-        ======================================
-        */
-
-        if (
-            event.track.kind ===
-            "audio"
-        ) {
-
-            remoteAudioStream.addTrack(
-                event.track
-            );
-
-
-            const remoteAudio =
-                document
-                .getElementById(
-                    "remoteAudio"
-                );
-
-
-            remoteAudio.srcObject =
-                remoteAudioStream;
-
-
-            remoteAudio
-                .play()
-                .catch(
-                    error =>
-                    console.warn(
-                        "Audio autoplay blocked:",
-                        error
-                    )
-                );
-
-
-            document
-                .getElementById(
-                    "micState"
-                )
-                .textContent =
-                "● ACTIVE";
-
-
-            return;
-
-        }
-
-
-        /*
-        ======================================
-        VIDEO
-        ======================================
-        */
-
-        const incomingStream =
-            event.streams &&
-            event.streams[0];
-
-
-        if (
-            !incomingStream
-        ) {
-
-            console.warn(
-                "Video track has no stream."
-            );
-
-            return;
-
-        }
-
-
-        const streamId =
-            incomingStream.id;
-
-
-        console.log(
-            "SHOKTI: Incoming video stream:",
-            streamId
-        );
-
-
-        /*
-        ======================================
-        FRONT CAMERA
-        ======================================
-        */
-
-        if (
-            streamId ===
-            data.cameraStreams?.front
-        ) {
-
-            const frontVideo =
-                document
-                .getElementById(
-                    "frontRemoteVideo"
-                );
-
-
-            frontVideo.srcObject =
-                incomingStream;
-
-
-            document
-                .getElementById(
-                    "frontCameraBox"
-                )
-                .classList
-                .add("active");
-
-        }
-
-
-        /*
-        ======================================
-        BACK CAMERA
-        ======================================
-        */
-
-        else if (
-            streamId ===
-            data.cameraStreams?.back
-        ) {
-
-            const backVideo =
-                document
-                .getElementById(
-                    "backRemoteVideo"
-                );
-
-
-            backVideo.srcObject =
-                incomingStream;
-
-
-            document
-                .getElementById(
-                    "backCameraBox"
-                )
-                .classList
-                .add("active");
-
-        }
-
-
-        /*
-        ======================================
-        FALLBACK
-        ======================================
-        */
-
-        else {
-
-            /*
-            If the browser doesn't preserve
-            the expected stream ID, put the
-            first unknown camera into the
-            first available camera box.
-            */
-
-            const frontVideo =
-                document
-                .getElementById(
-                    "frontRemoteVideo"
-                );
-
-
-            const backVideo =
-                document
-                .getElementById(
-                    "backRemoteVideo"
-                );
-
+    return new Promise(
+        resolve => {
 
             if (
-                !frontVideo.srcObject
+                pc.iceGatheringState ===
+                "complete"
             ) {
 
-                frontVideo.srcObject =
-                    incomingStream;
-
-
-                document
-                    .getElementById(
-                        "frontCameraBox"
-                    )
-                    .classList
-                    .add("active");
-
-            }
-
-            else if (
-                !backVideo.srcObject
-            ) {
-
-                backVideo.srcObject =
-                    incomingStream;
-
-
-                document
-                    .getElementById(
-                        "backCameraBox"
-                    )
-                    .classList
-                    .add("active");
-
-            }
-
-        }
-
-
-        /*
-        ======================================
-        CAMERA STATUS
-        ======================================
-        */
-
-        const frontVideo =
-            document
-            .getElementById(
-                "frontRemoteVideo"
-            );
-
-
-        const backVideo =
-            document
-            .getElementById(
-                "backRemoteVideo"
-            );
-
-
-        if (
-            frontVideo.srcObject &&
-            backVideo.srcObject
-        ) {
-
-            document
-                .getElementById(
-                    "videoStatus"
-                )
-                .textContent =
-                "● FRONT + BACK CAMERAS CONNECTED";
-
-        }
-
-        else {
-
-            document
-                .getElementById(
-                    "videoStatus"
-                )
-                .textContent =
-                "● LIVE CAMERA CONNECTED";
-
-        }
-
-
-        document
-            .getElementById(
-                "cameraState"
-            )
-            .textContent =
-            "● ACTIVE";
-
-    };
-
-
-    /*
-    ==========================================
-    CONNECTION STATE
-    ==========================================
-    */
-
-    peerConnection
-        .onconnectionstatechange =
-        () => {
-
-            if (
-                !peerConnection
-            ) {
+                resolve();
 
                 return;
 
             }
 
 
+            function checkState() {
+
+                if (
+                    pc.iceGatheringState ===
+                    "complete"
+                ) {
+
+                    pc.removeEventListener(
+                        "icegatheringstatechange",
+                        checkState
+                    );
+
+                    resolve();
+
+                }
+
+            }
+
+
+            pc.addEventListener(
+                "icegatheringstatechange",
+                checkState
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================
+   CONNECT TO VICTIM
+========================================= */
+
+async function connectToVictim(
+    callId,
+    data
+) {
+
+    try {
+
+        /*
+           Close previous connection
+        */
+
+        if (peerConnection) {
+
+            peerConnection.close();
+
+        }
+
+
+        peerConnection =
+            new RTCPeerConnection({
+
+                iceServers: [
+
+                    {
+
+                        urls:
+                        "stun:stun.l.google.com:19302"
+
+                    }
+
+                ]
+
+            });
+
+
+        /* =================================
+           RECEIVE TRACK
+        ================================= */
+
+        peerConnection.ontrack =
+        function(event) {
+
+            const track =
+                event.track;
+
+
+            console.log(
+                "Received track:",
+                track.kind,
+                track.id
+            );
+
+
+            /* =============================
+               MICROPHONE
+            ============================= */
+
+            if (
+                track.kind === "audio"
+            ) {
+
+                const audio =
+                    document
+                    .getElementById(
+                        "remoteAudio"
+                    );
+
+
+                const audioStream =
+                    new MediaStream();
+
+
+                audioStream.addTrack(
+                    track
+                );
+
+
+                audio.srcObject =
+                    audioStream;
+
+
+                audio.play()
+                    .catch(
+                        () => {}
+                    );
+
+
+                document
+                    .getElementById(
+                        "micState"
+                    )
+                    .textContent =
+                    "● ACTIVE";
+
+
+                document
+                    .getElementById(
+                        "micState2"
+                    )
+                    .textContent =
+                    "● ACTIVE";
+
+
+                return;
+
+            }
+
+
+            /* =============================
+               VIDEO
+            ============================= */
+
+            if (
+                track.kind === "video"
+            ) {
+
+                const tracks =
+                    data.tracks || {};
+
+
+                /*
+                   MATCH TRACK ID
+                */
+
+                if (
+                    track.id ===
+                    tracks.front
+                ) {
+
+                    const video =
+                        document
+                        .getElementById(
+                            "frontRemoteVideo"
+                        );
+
+
+                    const stream =
+                        new MediaStream();
+
+
+                    stream.addTrack(
+                        track
+                    );
+
+
+                    video.srcObject =
+                        stream;
+
+
+                    video.play()
+                        .catch(
+                            () => {}
+                        );
+
+
+                    console.log(
+                        "FRONT CAMERA RECEIVED"
+                    );
+
+                }
+
+
+                else if (
+                    track.id ===
+                    tracks.back
+                ) {
+
+                    const video =
+                        document
+                        .getElementById(
+                            "backRemoteVideo"
+                        );
+
+
+                    const stream =
+                        new MediaStream();
+
+
+                    stream.addTrack(
+                        track
+                    );
+
+
+                    video.srcObject =
+                        stream;
+
+
+                    video.play()
+                        .catch(
+                            () => {}
+                        );
+
+
+                    console.log(
+                        "BACK CAMERA RECEIVED"
+                    );
+
+                }
+
+
+                /*
+                   If only one camera exists
+                */
+
+                else {
+
+                    const frontVideo =
+                        document
+                        .getElementById(
+                            "frontRemoteVideo"
+                        );
+
+
+                    const backVideo =
+                        document
+                        .getElementById(
+                            "backRemoteVideo"
+                        );
+
+
+                    if (
+                        !frontVideo.srcObject
+                    ) {
+
+                        const stream =
+                            new MediaStream();
+
+
+                        stream.addTrack(
+                            track
+                        );
+
+
+                        frontVideo.srcObject =
+                            stream;
+
+
+                        frontVideo.play()
+                            .catch(
+                                () => {}
+                            );
+
+                    }
+
+                    else if (
+                        !backVideo.srcObject
+                    ) {
+
+                        const stream =
+                            new MediaStream();
+
+
+                        stream.addTrack(
+                            track
+                        );
+
+
+                        backVideo.srcObject =
+                            stream;
+
+
+                        backVideo.play()
+                            .catch(
+                                () => {}
+                            );
+
+                    }
+
+                }
+
+
+                document
+                    .getElementById(
+                        "cameraState"
+                    )
+                    .textContent =
+                    "● ACTIVE";
+
+
+                document
+                    .getElementById(
+                        "videoStatus"
+                    )
+                    .textContent =
+                    "● LIVE CAMERA CONNECTED";
+
+            }
+
+        };
+
+
+        /* =================================
+           CONNECTION STATE
+        ================================= */
+
+        peerConnection
+        .onconnectionstatechange =
+        function() {
+
             const state =
                 peerConnection
                 .connectionState;
+
+
+            console.log(
+                "Police WebRTC:",
+                state
+            );
 
 
             document
@@ -1657,8 +1580,7 @@ async function connectToVictim(
 
 
             if (
-                state ===
-                "connected"
+                state === "connected"
             ) {
 
                 document
@@ -1672,8 +1594,7 @@ async function connectToVictim(
 
 
             if (
-                state ===
-                "failed"
+                state === "failed"
             ) {
 
                 document
@@ -1688,76 +1609,157 @@ async function connectToVictim(
         };
 
 
-    /*
-    ==========================================
-    RECEIVE VICTIM ICE CANDIDATES
-    ==========================================
-    */
+        /* =================================
+           RECEIVE OFFER
+        ================================= */
 
-    candidateListener =
-        onChildAdded(
+        const offer =
+            data.offer;
+
+
+        if (!offer) {
+
+            console.error(
+                "No offer found."
+            );
+
+            return;
+
+        }
+
+
+        await peerConnection
+            .setRemoteDescription(
+
+                new RTCSessionDescription(
+                    offer
+                )
+
+            );
+
+
+        /* =================================
+           CREATE ANSWER
+        ================================= */
+
+        const answer =
+            await peerConnection
+            .createAnswer();
+
+
+        await peerConnection
+            .setLocalDescription(
+                answer
+            );
+
+
+        /*
+           Wait for ICE candidates
+        */
+
+        await waitForIceGatheringComplete(
+            peerConnection
+        );
+
+
+        const finalAnswer =
+            peerConnection.localDescription;
+
+
+        /* =================================
+           SEND ANSWER TO VICTIM
+        ================================= */
+
+        await set(
 
             ref(
                 database,
-                `calls/${callId}/callerCandidates`
+                "calls/" +
+                callId +
+                "/answer"
             ),
 
-            async snapshot => {
+            {
 
-                const candidate =
-                    snapshot.val();
+                type:
+                finalAnswer.type,
 
-
-                if (
-                    candidate &&
-                    peerConnection
-                ) {
-
-                    try {
-
-                        await peerConnection
-                            .addIceCandidate(
-
-                                new RTCIceCandidate(
-                                    candidate
-                                )
-
-                            );
-
-                    }
-
-                    catch(error) {
-
-                        console.error(
-                            "ICE error:",
-                            error
-                        );
-
-                    }
-
-                }
+                sdp:
+                finalAnswer.sdp
 
             }
 
         );
 
 
-    /*
-    ==========================================
-    RECEIVE OFFER
-    ==========================================
-    */
-
-    const offer =
-        data.offer;
-
-
-    if (
-        !offer
-    ) {
-
         console.log(
-            "Offer not available yet."
+            "Police answer sent."
+        );
+
+
+        document
+            .getElementById(
+                "videoStatus"
+            )
+            .textContent =
+            "● CONNECTING TO VICTIM...";
+
+    }
+
+    catch(error) {
+
+        console.error(
+            "WebRTC connection failed:",
+            error
+        );
+
+
+        document
+            .getElementById(
+                "connectionState"
+            )
+            .textContent =
+            "● FAILED";
+
+
+        document
+            .getElementById(
+                "connectionState"
+            )
+            .className =
+            "red";
+
+
+        document
+            .getElementById(
+                "videoStatus"
+            )
+            .textContent =
+            "● CONNECTION FAILED";
+
+    }
+
+}
+
+
+/* =========================================
+   ENABLE AUDIO
+========================================= */
+
+window.enableAudio =
+function() {
+
+    const audio =
+        document
+        .getElementById(
+            "remoteAudio"
+        );
+
+
+    if (!audio.srcObject) {
+
+        alert(
+            "The police audio stream has not arrived yet."
         );
 
         return;
@@ -1765,101 +1767,40 @@ async function connectToVictim(
     }
 
 
-    await peerConnection
-        .setRemoteDescription(
+    audio.play()
+        .then(
+            () => {
 
-            new RTCSessionDescription(
-                offer
-            )
-
-        );
-
-
-    /*
-    ==========================================
-    CREATE ANSWER
-    ==========================================
-    */
-
-    const answer =
-        await peerConnection
-        .createAnswer();
-
-
-    await peerConnection
-        .setLocalDescription(
-            answer
-        );
-
-
-    /*
-    ==========================================
-    SAVE ANSWER
-    ==========================================
-    */
-
-    await set(
-
-        ref(
-            database,
-            `calls/${callId}/answer`
-        ),
-
-        {
-
-            type:
-            answer.type,
-
-            sdp:
-            answer.sdp
-
-        }
-
-    );
-
-
-    /*
-    ==========================================
-    SEND POLICE ICE CANDIDATES
-    ==========================================
-    */
-
-    peerConnection.onicecandidate =
-    async event => {
-
-        if (
-            event.candidate
-        ) {
-
-            const candidateRef =
-                push(
-
-                    ref(
-                        database,
-                        `calls/${callId}/calleeCandidates`
+                document
+                    .getElementById(
+                        "micState"
                     )
+                    .textContent =
+                    "● ACTIVE";
 
+            }
+        )
+        .catch(
+            error => {
+
+                console.error(
+                    error
                 );
 
+                alert(
+                    "The browser blocked audio playback. " +
+                    "Please allow audio for this page."
+                );
 
-            await set(
+            }
+        );
 
-                candidateRef,
-
-                event.candidate.toJSON()
-
-            );
-
-        }
-
-    };
-
-}
+};
 
 
-/* ==========================================
+/* =========================================
    DISPATCH
-========================================== */
+========================================= */
 
 window.dispatchPolice =
 function() {
@@ -1877,22 +1818,29 @@ function() {
 };
 
 
-/* ==========================================
+/* =========================================
    RESOLVE
-========================================== */
+========================================= */
 
 window.resolveEmergency =
 async function() {
 
-    if (
-        currentCallId
-    ) {
+    if (!currentCallId) {
+
+        return;
+
+    }
+
+
+    try {
 
         await set(
 
             ref(
                 database,
-                `calls/${currentCallId}/status`
+                "calls/" +
+                currentCallId +
+                "/status"
             ),
 
             "RESOLVED"
@@ -1901,30 +1849,30 @@ async function() {
 
     }
 
+    catch(error) {
 
-    /*
-    ==========================================
-    CLOSE WEBRTC
-    ==========================================
-    */
-
-    if (
-        peerConnection
-    ) {
-
-        peerConnection.close();
-
-        peerConnection =
-            null;
+        console.error(error);
 
     }
 
 
-    /*
-    ==========================================
-    CLEAR VIDEO
-    ==========================================
-    */
+    /* =================================
+       CLOSE WEBRTC
+    ================================= */
+
+    if (peerConnection) {
+
+        peerConnection.close();
+
+        peerConnection =
+        null;
+
+    }
+
+
+    /* =================================
+       CLEAR VIDEOS
+    ================================= */
 
     document
         .getElementById(
@@ -1950,71 +1898,9 @@ async function() {
         null;
 
 
-    /*
-    ==========================================
-    HIDE CAMERA BOXES
-    ==========================================
-    */
-
-    document
-        .getElementById(
-            "frontCameraBox"
-        )
-        .classList
-        .remove("active");
-
-
-    document
-        .getElementById(
-            "backCameraBox"
-        )
-        .classList
-        .remove("active");
-
-
-    /*
-    ==========================================
-    RESET STATUS
-    ==========================================
-    */
-
-    document
-        .getElementById(
-            "cameraState"
-        )
-        .textContent =
-        "● WAITING";
-
-
-    document
-        .getElementById(
-            "micState"
-        )
-        .textContent =
-        "● WAITING";
-
-
-    document
-        .getElementById(
-            "connectionState"
-        )
-        .textContent =
-        "● DISCONNECTED";
-
-
-    document
-        .getElementById(
-            "videoStatus"
-        )
-        .textContent =
-        "● WAITING FOR LIVE STREAM";
-
-
-    /*
-    ==========================================
-    RETURN TO WAITING
-    ==========================================
-    */
+    /* =================================
+       RESET UI
+    ================================= */
 
     document
         .getElementById(
@@ -2032,12 +1918,27 @@ async function() {
         "block";
 
 
+    document
+        .getElementById(
+            "videoStatus"
+        )
+        .textContent =
+        "● WAITING FOR LIVE STREAM";
+
+
+    document
+        .getElementById(
+            "connectionState"
+        )
+        .textContent =
+        "● CONNECTING";
+
+
     currentCallId =
         null;
 
-
-    remoteAudioStream =
-        new MediaStream();
+    currentCallData =
+        null;
 
 };
 
